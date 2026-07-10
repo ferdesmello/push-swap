@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   logic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/23 14:21:08 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/06/23 15:19:30 by ferde-so         ###   ########.fr       */
+/*   Created: 2026/07/10 00:43:18 by ferde-so          #+#    #+#             */
+/*   Updated: 2026/07/10 01:05:29 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int	ft_puthex(unsigned int n, char type)
+int logic(int argc, char **argv)
 {
-	char		c;
-	int			count;
-	const char	*set;
-
-	if (type == 'X')
-		set = "0123456789ABCDEF";
-	else
-		set = "0123456789abcdef";
-	count = 0;
-	if (n >= 16)
+	int i; 
+	int value; 
+	t_stack a; 
+	t_stack b; 
+	t_node *new;
+	
+	stack_init(&a);
+	stack_init(&b); 
+	i = 1;
+	while (i < argc)
 	{
-		count += ft_puthex(n / 16, type);
+		if (!isnumber(argv[i]))
+			return (0);
+		value = ft_atoi(argv[i]);
+		new = node_new(value);
+		if (!new)
+			return (0);
+		stack_add_back(&a, new);
+		i++;
 	}
-	c = set[n % 16];
-	write(1, &c, 1);
-	count++;
-	return (count);
+	print_test(&a);
+	return (1); 
 }

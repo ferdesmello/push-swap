@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   auxiliar.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 15:15:02 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/06/20 22:57:20 by ferde-so         ###   ########.fr       */
+/*   Created: 2026/07/10 01:05:17 by ferde-so          #+#    #+#             */
+/*   Updated: 2026/07/10 01:05:35 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int	ft_putchar(char c)
+#include <stdio.h>
+
+void print_test(t_stack *stack)
 {
-	write(1, &c, 1);
-	return (1);
+	t_node *current;
+	current = stack->head;
+	while (current != NULL)
+	{
+		printf("%d\n", current->value);
+		current = current->next;
+	}
 }
