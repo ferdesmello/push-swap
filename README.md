@@ -8,6 +8,22 @@
 
 The main goal of this project is...
 
+### Files
+
+- `main.c` - the main function that gets the parameters.
+- `logic.c` - the logic functions that call the other functions.
+- `stack.c` - functions to create nodes, stacks, and clear them.
+- `stack_utils.c` - auxiliar functions to validade the parameters.
+- `stack_validation.c` - auxiliar functions to validade the stacks.
+- `push.c` - push operations.
+- `swap.c` - swap operations.
+- `rotate.c` - rotate operations.
+- `reverse_rotate.c` - reverse rotate operations.
+
+### Functions
+
+...
+
 ## Instructions
 
 After cloning or downloading the repository, compile and use the program like this:
@@ -39,19 +55,20 @@ To rebuild everything from scratch:
 make re
 ```
 
+One example of how to run the program with parameters:
+
+```sh
+./push_swap 5 200 0 4 -50
+```
+
+Where `5 200 0 4 -50` is any sequence of integers.
+
 ## Resources
 
-References used during development:
-- The 42 Network project pdf's.
-- Online C learning resources such as `w3schools.com`, `geeksforgeeks.org`, `stackoverflow.com`, etc.
- - Github for automatic testers (`printfTester`).
+References used during development...
 
-AI usage:
-- AI assistance was used in many instances, from discussion of topics, errors, ideas, problems, and improvements, to explanations, research, tests, and to help draft and write the README content.
-
-- But mostly to search for learning resources and to explain problems in the code (e.g., "Why doesn't it work?", "What is the difference between x, y, and z?", etc.).
+AI usage...
 
 ## Algorithms 
 
-`A detailed explanation and justification of the algorithms selected for this project
-must also be included.`
+> A detailed explanation and justification of the algorithms selected for this project must also be included.

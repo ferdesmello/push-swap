@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
+#    Updated: 2026/07/11 00:29:21 by ferde-so         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
 
 CC = cc
@@ -8,9 +20,13 @@ INCLUDES = -Iincludes
 SRC = \
 	main.c \
 	logic.c \
-	numbers.c \
-	auxiliar.c \
-	lists.c
+	stack.c \
+	stack_utils.c \
+	stack_validation.c \
+	push.c \
+	swap.c \
+	rotate.c \
+	reverse_rotate.c
 
 OBJ = $(SRC:.c=.o)
 

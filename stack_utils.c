@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   numbers.c                                          :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/10 00:43:14 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/10 00:50:49 by ferde-so         ###   ########.fr       */
+/*   Created: 2026/07/09 15:56:19 by iscarval          #+#    #+#             */
+/*   Updated: 2026/07/11 00:28:48 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	isnumber(const char *s)
+/* This function checks if a string represents a valid number */
+int	is_number(const char *s)
 {
 	int	i;
 
@@ -21,14 +22,15 @@ int	isnumber(const char *s)
 		i++;
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]))
+		if (!ft_is_digit(s[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	ft_isdigit(int c)
+/* This function checks if a character is a digit */
+int	ft_is_digit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
@@ -36,6 +38,7 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
+/* This function converts a string to an integer */
 int	ft_atoi(const char *nptr)
 {
 	int	number;

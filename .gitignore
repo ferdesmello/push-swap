@@ -1,0 +1,9 @@
+# Executáveis
+push_swap
+checker
+
+# Objetos
+*.o
+
+# Arquivos temporários
+*.out
