@@ -6,11 +6,34 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 00:28:34 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/11 01:10:27 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/13 18:11:20 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* This function checks if the stack has repeated values */
+int	stack_repeated(t_stack *a)
+{
+	t_node	*node_i;
+	t_node	*node_j;
+
+	if (!a || !a->head || !a->head->next)
+		return (0);
+	node_i = a->head;
+	while (node_i != NULL)
+	{
+		node_j = node_i->next;
+		while (node_j != NULL)
+		{
+			if (node_i->value == node_j->value)
+				return (0);
+			node_j = node_j->next;
+		}
+		node_i = node_i->next;
+	}
+	return (1);
+}
 
 /* This function prints the values in a stack in order and reverse order 
 (double directions in links) to check if they are correct. The flag parameter

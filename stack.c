@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:05 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/11 01:07:30 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/13 18:11:56 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	stack_load(t_stack *a, int argc, char **argv)
 		if (!is_number(argv[i]))
 			return (0);
 		value = ft_atoi(argv[i]);
+		if (value > INT_MAX || value < INT_MIN)
+			return (0);
 		new = node_new(value);
 		if (!new)
 			return (free(new), 0);
@@ -76,6 +78,8 @@ int	stack_load(t_stack *a, int argc, char **argv)
 			return (0);
 		i++;
 	}
+	if (!stack_repeated(a))
+		return (0);
 	return (1);
 }
 

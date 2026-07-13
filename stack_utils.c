@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:19 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/11 00:28:48 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/13 18:11:40 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,34 @@ int	ft_atoi(const char *nptr)
 	}
 	number = number * sign;
 	return (number);
+}
+
+/* This function calculates the disorder of the a stack given */
+float	compute_disorder(t_stack *a)
+{
+	float	mistakes;
+	float	total_pairs;
+	t_node	*node_i;
+	t_node	*node_j;
+
+	if (!a || !a->head || !a->head->next)
+		return (0.0);
+	mistakes = 0.0;
+	total_pairs = 0.0;
+	node_i = a->head;
+	while (node_i != NULL)
+	{
+		node_j = node_i->next;
+		while (node_j != NULL)
+		{
+			total_pairs++;
+			if (node_i->value > node_j->value)
+				mistakes++;
+			node_j = node_j->next;
+		}
+		node_i = node_i->next;
+	}
+	if (total_pairs == 0.0)
+		return (0.0);
+	return (mistakes / total_pairs);
 }

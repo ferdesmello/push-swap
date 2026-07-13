@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/11 00:51:54 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/13 17:13:34 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 # include <stdio.h>
 
@@ -38,6 +39,7 @@ t_node	*node_new(int value);
 int		stack_add_back(t_stack *stack, t_node *new_node);
 int		stack_load(t_stack *a, int argc, char **argv);
 void	stack_clear(t_stack *stack);
+int		stack_repeated(t_stack *a);
 int		stack_operations_test(t_stack *a, t_stack *b);
 int		stack_valid(t_stack *stack);
 void	print_test(t_stack *stack, char name, int flag);
@@ -63,5 +65,7 @@ void	reverse_rotate(t_stack *stack);
 void	reverse_rotate_a(t_stack *a);
 void	reverse_rotate_b(t_stack *b);
 void	reverse_rotate_ab(t_stack *a, t_stack *b);
+
+float	compute_disorder(t_stack *a);
 
 #endif

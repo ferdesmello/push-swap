@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 00:41:22 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/11 00:51:45 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/13 16:45:09 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 	}
+	printf("disorder: %f\n", compute_disorder(&a));
 	stack_operations_test(&a, &b);
 	stack_clear(&a);
 	stack_clear(&b);
