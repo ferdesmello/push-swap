@@ -6,39 +6,16 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 00:28:34 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/13 18:11:20 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/16 16:12:14 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* This function checks if the stack has repeated values */
-int	stack_repeated(t_stack *a)
-{
-	t_node	*node_i;
-	t_node	*node_j;
-
-	if (!a || !a->head || !a->head->next)
-		return (0);
-	node_i = a->head;
-	while (node_i != NULL)
-	{
-		node_j = node_i->next;
-		while (node_j != NULL)
-		{
-			if (node_i->value == node_j->value)
-				return (0);
-			node_j = node_j->next;
-		}
-		node_i = node_i->next;
-	}
-	return (1);
-}
-
 /* This function prints the values in a stack in order and reverse order 
 (double directions in links) to check if they are correct. The flag parameter
 determines the order of printing. 1 for forward, 2 for reverse, 3 for both */
-void	print_test(t_stack *stack, char name, int flag)
+void	stack_print_test(t_stack *stack, char name, int flag)
 {
 	t_node	*current;
 
@@ -109,32 +86,32 @@ functions are working correctly and the resulting stacks are valid */
 int	stack_operations_test(t_stack *a, t_stack *b)
 {
 	//initial state of stacks
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//rotates and reverse rotates a twice
 	rotate_a(a);
 	if (!stack_valid(a))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 	reverse_rotate_a(a);
 	if (!stack_valid(a))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//swaps a twice
 	swap_a(a);
 	if (!stack_valid(a))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 	swap_a(a);
 	if (!stack_valid(a))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//pushes a to b 4 times
 	push_b(a, b);
@@ -149,32 +126,32 @@ int	stack_operations_test(t_stack *a, t_stack *b)
 	push_b(a, b);
 	if (!stack_valid(a))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//rotates b twice
 	rotate_b(b);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 	reverse_rotate_b(b);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//swaps b twice
 	swap_b(b);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 	swap_b(b);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//swaps both twice
 	swap_ab(a, b);
@@ -182,15 +159,15 @@ int	stack_operations_test(t_stack *a, t_stack *b)
 		return (0);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 	swap_ab(a, b);
 	if (!stack_valid(a))
 		return (0);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//rotates and reverse rotates both
 	rotate_ab(a, b);
@@ -198,15 +175,15 @@ int	stack_operations_test(t_stack *a, t_stack *b)
 		return (0);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 	reverse_rotate_ab(a, b);
 	if (!stack_valid(a))
 		return (0);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	//pushes b to a 4 times
 	push_a(b, a);
@@ -229,8 +206,8 @@ int	stack_operations_test(t_stack *a, t_stack *b)
 		return (0);
 	if (!stack_valid(b))
 		return (0);
-	print_test(a, 'a', 1);
-	print_test(b, 'b', 1);
+	stack_print_test(a, 'a', 1);
+	stack_print_test(b, 'b', 1);
 
 	return (1);
 }

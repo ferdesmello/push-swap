@@ -6,7 +6,7 @@
 #    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
-#    Updated: 2026/07/11 00:29:21 by ferde-so         ###   ########.fr        #
+#    Updated: 2026/07/16 19:27:46 by ferde-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,14 @@ SRC = \
 	logic.c \
 	stack.c \
 	stack_utils.c \
-	stack_validation.c \
+	stack_debug.c \
 	push.c \
 	swap.c \
 	rotate.c \
-	reverse_rotate.c
+	reverse_rotate.c \
+	small_sort.c \
+	algorithm_simple.c \
+	printer.c
 
 OBJ = $(SRC:.c=.o)
 

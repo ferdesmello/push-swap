@@ -14,11 +14,14 @@ The main goal of this project is...
 - `logic.c` - the logic functions that call the other functions.
 - `stack.c` - functions to create nodes, stacks, and clear them.
 - `stack_utils.c` - auxiliar functions to validade the parameters.
-- `stack_validation.c` - auxiliar functions to validade the stacks.
+- `stack_debug.c` - auxiliar functions to validade the stacks.
 - `push.c` - push operations.
 - `swap.c` - swap operations.
 - `rotate.c` - rotate operations.
 - `reverse_rotate.c` - reverse rotate operations.
+- `algorithm_simple` - functions to sort by the simple algorithm.
+- `small_sort.c` - functions for sorting short stacks.
+- `printer` - functions to print characters on the.
 
 ### Functions
 

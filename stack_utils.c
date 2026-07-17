@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:19 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/13 18:11:40 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/16 16:12:29 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,11 @@ int	is_number(const char *s)
 		i++;
 	while (s[i])
 	{
-		if (!ft_is_digit(s[i]))
+		if (s[i] <= '0' && s[i] >= '9')
 			return (0);
 		i++;
 	}
 	return (1);
-}
-
-/* This function checks if a character is a digit */
-int	ft_is_digit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
 }
 
 /* This function converts a string to an integer */
@@ -66,7 +57,30 @@ int	ft_atoi(const char *nptr)
 	return (number);
 }
 
-/* This function calculates the disorder of the a stack given */
+/* This function checks if the stack has repeated values */
+int	stack_repeated(t_stack *a)
+{
+	t_node	*node_i;
+	t_node	*node_j;
+
+	if (!a || !a->head || !a->head->next)
+		return (0);
+	node_i = a->head;
+	while (node_i != NULL)
+	{
+		node_j = node_i->next;
+		while (node_j != NULL)
+		{
+			if (node_i->value == node_j->value)
+				return (0);
+			node_j = node_j->next;
+		}
+		node_i = node_i->next;
+	}
+	return (1);
+}
+
+/* This function calculates the disorder of the given a stack */
 float	compute_disorder(t_stack *a)
 {
 	float	mistakes;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iscarval <iscarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 00:41:22 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/13 16:45:09 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/16 20:56:45 by iscarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,15 @@ int	main(int argc, char **argv)
 		write(1, "Error1\n", 7);
 		return (0);
 	}
-	else
+	if (!stack_load(&a, argc, argv))
 	{
-		if (!stack_load(&a, argc, argv))
-		{
-			write(1, "Error2\n", 7);
-			stack_clear(&a);
-			stack_clear(&b);
-			return (0);
-		}
+		write(1, "Error2\n", 7);
+		stack_clear(&a);
+		stack_clear(&b);
+		return (0);
 	}
-	printf("disorder: %f\n", compute_disorder(&a));
-	stack_operations_test(&a, &b);
+	algo(&a, &b);
+	// stack_operations_test(&a, &b);
 	stack_clear(&a);
 	stack_clear(&b);
 	return (0);
