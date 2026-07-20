@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_creation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:05 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/13 18:11:56 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/20 05:13:16 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	stack_init(t_stack *stack)
 	stack->head = NULL;
 	stack->tail = NULL;
 	stack->size = 0;
+	stack->operations = NULL;
 }
 
 /* This function creates a new node */
@@ -29,6 +30,7 @@ t_node	*node_new(int value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
+	new_node->index = -1;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
@@ -57,13 +59,13 @@ int	stack_add_back(t_stack *stack, t_node *new_node)
 }
 
 /* This function loads the a stack with the provided arguments */
-int	stack_load(t_stack *a, int argc, char **argv)
+int	stack_load(t_stack *a, int argc, char **argv, int start)
 {
 	int		i;
-	int		value;
+	long	value;
 	t_node	*new;
 
-	i = 1;
+	i = start;
 	while (i < argc)
 	{
 		if (!is_number(argv[i]))
@@ -71,9 +73,9 @@ int	stack_load(t_stack *a, int argc, char **argv)
 		value = ft_atoi(argv[i]);
 		if (value > INT_MAX || value < INT_MIN)
 			return (0);
-		new = node_new(value);
+		new = node_new((int)value);
 		if (!new)
-			return (free(new), 0);
+			return (0);
 		if (!stack_add_back(a, new))
 			return (0);
 		i++;

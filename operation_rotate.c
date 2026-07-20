@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   operation_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:58 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/11 01:06:32 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/20 05:17:05 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	rotate_a(t_stack *a)
 {
 	rotate(a);
 	write(1, "ra\n", 3);
+	(*a->operations)++;
 }
 
 /* This function rotates stack b */
@@ -41,6 +42,7 @@ void	rotate_b(t_stack *b)
 {
 	rotate(b);
 	write(1, "rb\n", 3);
+	(*b->operations)++;
 }
 
 /* This function rotates stack a and stack b */
@@ -49,4 +51,5 @@ void	rotate_ab(t_stack *a, t_stack *b)
 	rotate(a);
 	rotate(b);
 	write(1, "rr\n", 3);
+	(*a->operations)++;
 }

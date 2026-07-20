@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   operation_push.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:19 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/10 23:35:27 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/20 05:17:33 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	push_a(t_stack *b, t_stack *a)
 {
 	push(b, a);
 	write(1, "pa\n", 3);
+	(*b->operations)++;
 }
 
 /* This function pushes the top element of stack a to the top of stack b */
@@ -48,4 +49,5 @@ void	push_b(t_stack *a, t_stack *b)
 {
 	push(a, b);
 	write(1, "pb\n", 3);
+	(*a->operations)++;
 }

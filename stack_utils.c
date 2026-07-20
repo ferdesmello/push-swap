@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:19 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/16 16:12:29 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/20 03:23:20 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ int	is_number(const char *s)
 	int	i;
 
 	i = 0;
+	if (!s || !s[i])
+		return (0);
 	if (s[i] == '-' || s[i] == '+')
 		i++;
+	if (!s[i])
+		return (0);
 	while (s[i])
 	{
-		if (s[i] <= '0' && s[i] >= '9')
+		if (s[i] < '0' || s[i] > '9')
 			return (0);
 		i++;
 	}
@@ -30,11 +34,11 @@ int	is_number(const char *s)
 }
 
 /* This function converts a string to an integer */
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	number;
-	int	i;
-	int	sign;
+	long	number;
+	int		i;
+	int		sign;
 
 	number = 0;
 	i = 0;
@@ -63,8 +67,10 @@ int	stack_repeated(t_stack *a)
 	t_node	*node_i;
 	t_node	*node_j;
 
-	if (!a || !a->head || !a->head->next)
+	if (!a || !a->head)
 		return (0);
+	if (!a->head->next)
+		return (1);
 	node_i = a->head;
 	while (node_i != NULL)
 	{
@@ -108,4 +114,21 @@ float	compute_disorder(t_stack *a)
 	if (total_pairs == 0.0)
 		return (0.0);
 	return (mistakes / total_pairs);
+}
+
+/*This function checks if the stack is sorted*/
+int	is_sorted(t_stack *stack)
+{
+	t_node	*current;
+
+	if (!stack || !stack->head)
+		return (1);
+	current = stack->head;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

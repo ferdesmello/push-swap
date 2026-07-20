@@ -6,7 +6,7 @@
 #    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
-#    Updated: 2026/07/16 19:27:46 by ferde-so         ###   ########.fr        #
+#    Updated: 2026/07/20 05:26:22 by ferde-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,17 @@ INCLUDES = -Iincludes
 SRC = \
 	main.c \
 	logic.c \
-	stack.c \
+	flag_parser.c \
+	stack_creation.c \
 	stack_utils.c \
 	stack_debug.c \
-	push.c \
-	swap.c \
-	rotate.c \
-	reverse_rotate.c \
-	small_sort.c \
+	operation_push.c \
+	operation_swap.c \
+	operation_rotate.c \
+	operation_reverse_rotate.c \
+	algorithm_small.c \
 	algorithm_simple.c \
+	algorithm_medium.c \
 	printer.c
 
 OBJ = $(SRC:.c=.o)
