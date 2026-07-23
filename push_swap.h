@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/23 05:20:07 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/23 17:23:49 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_stack
 	t_node	*head;
 	t_node	*tail;
 	int		size;
-	int		*operations;
 }	t_stack;
 
 typedef enum e_strategy
@@ -92,7 +91,6 @@ void		simple_sort(t_stack *a, t_stack *b);
 void		complex_sort(t_stack *a, t_stack *b);
 
 void		assign_indexes(t_stack *a);
-//t_node		*find_max_index(t_stack *stack);
 int			find_chunk_position(t_stack *a, int limit);
 void		medium_sort(t_stack *a, t_stack *b);
 
