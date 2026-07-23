@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 17:44:54 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/20 03:41:44 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/23 06:08:21 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,35 @@ int	find_position(t_stack *stack, t_node *node)
 }
 
 /* This function moves a node to the top of the stack */
-void	move_to_top(t_stack *stack, int position)
+void	move_to_top(t_stack *stack, int position, char name)
 {
 	int	moves;
 
 	if (position <= stack->size / 2)
 	{
 		moves = position;
-		while (moves > 0)
+		while (moves-- > 0)
 		{
-			rotate_a(stack);
-			moves--;
+			if (name == 'a')
+				rotate_a(stack);
+			else
+				rotate_b(stack);
 		}
 	}
 	else
 	{
 		moves = stack->size - position;
-		while (moves > 0)
+		while (moves-- > 0)
 		{
-			reverse_rotate_a(stack);
-			moves--;
+			if (name == 'a')
+				reverse_rotate_a(stack);
+			else
+				reverse_rotate_b(stack);
 		}
 	}
 }
 
-/* This function sorts the stack using a simple algorithm */
+/* This function sorts the stack using a simple complexity algorithm */
 void	simple_sort(t_stack *a, t_stack *b)
 {
 	t_node	*min;
@@ -105,7 +109,7 @@ void	simple_sort(t_stack *a, t_stack *b)
 	{
 		min = find_min(a);
 		position = find_position(a, min);
-		move_to_top(a, position);
+		move_to_top(a, position, 'a');
 		push_b(a, b);
 	}
 	while (b->size > 0)

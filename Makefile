@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
+#    By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
-#    Updated: 2026/07/20 05:26:22 by ferde-so         ###   ########.fr        #
+#    Updated: 2026/07/21 00:29:38 by isabelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = \
 	algorithm_small.c \
 	algorithm_simple.c \
 	algorithm_medium.c \
+	algorithm_complex.c \
 	printer.c
 
 OBJ = $(SRC:.c=.o)

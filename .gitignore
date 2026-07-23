@@ -7,3 +7,5 @@ checker
 
 # Arquivos temporários
 *.out
+
+*.csv

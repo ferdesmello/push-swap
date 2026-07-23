@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 11:39:36 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/20 03:54:28 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/23 06:16:51 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	assign_indexes(t_stack *a)
 }
 
 /* This function finds the node with the maximum index in the stack */
-t_node	*find_max_index(t_stack *stack)
+/*t_node	*find_max_index(t_stack *stack)
 {
 	t_node	*current;
 	t_node	*max;
@@ -50,29 +50,80 @@ t_node	*find_max_index(t_stack *stack)
 		current = current->next;
 	}
 	return (max);
+}*/
+
+/*  This function finds the position (from the top or bottom) 
+of the first node in the stack that has an index less than or
+ equal to the limit */
+int	find_chunk_position(t_stack *a, int limit)
+{
+	t_node	*top;
+	t_node	*bottom;
+	int		top_position;
+	int		bottom_position;
+
+	top = a->head;
+	bottom = a->tail;
+	top_position = 0;
+	bottom_position = a->size - 1;
+	while (top && bottom)
+	{
+		if (top->index <= limit)
+			return (top_position);
+		if (bottom->index <= limit)
+			return (bottom_position);
+		top = top->next;
+		bottom = bottom->prev;
+		top_position++;
+		bottom_position--;
+	}
+	return (-1);
 }
 
 /* This function pushes chunks of nodes from stack a to stack b */
 static void	push_chunks_to_b(t_stack *a, t_stack *b, int chunk_size)
 {
 	int	pushed;
+	int	position;
 
 	pushed = 0;
 	while (a->size > 0)
 	{
-		if (a->head->index <= pushed + chunk_size)
-		{
-			push_b(a, b);
-			pushed++;
-		}
-		else
-			rotate_a(a);
+		position = find_chunk_position(a, pushed + chunk_size);
+		move_to_top(a, position, 'a');
+		push_b(a, b);
+		if (b->head->index < pushed + (chunk_size / 2))
+    		rotate_b(b);
+		pushed++;
 	}
 }
 
 /* This function pushes all nodes from stack b back to stack a 
 in descending order */
 static void	push_back_to_a(t_stack *a, t_stack *b)
+{
+	t_node	*current;
+	int		position;
+
+	while (b->size > 0)
+	{
+		current = b->head;
+		position = 0;
+		while (current)
+		{
+			if (current->index == b->size - 1)
+				break;
+			current = current->next;
+			position++;
+		}
+		move_to_top(b, position, 'b');
+		push_a(b, a);
+	}
+}
+
+/* This function pushes all nodes from stack b back to stack a 
+in descending order */
+/*static void	push_back_to_a(t_stack *a, t_stack *b)
 {
 	t_node	*max;
 	int		position;
@@ -81,21 +132,21 @@ static void	push_back_to_a(t_stack *a, t_stack *b)
 	{
 		max = find_max_index(b);
 		position = find_position(b, max);
-		move_to_top(b, position);
+		move_to_top(b, position, 'b');
 		push_a(b, a);
 	}
-}
+}*/
 
-/* This function sorts the stack using a medium algorithm */
+/* This function sorts the stack using a medium complexity algorithm */
 void	medium_sort(t_stack *a, t_stack *b)
 {
 	int	chunk_size;
 
-	assign_indexes(a);
 	if (a->size <= 100)
 		chunk_size = 20;
 	else
 		chunk_size = 45;
+	//chunk_size = a->size / 5;
 	push_chunks_to_b(a, b, chunk_size);
 	push_back_to_a(a, b);
 }
