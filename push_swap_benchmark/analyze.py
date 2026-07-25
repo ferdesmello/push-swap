@@ -205,10 +205,7 @@ def plot_heatmap(df, algorithm, output_dir):
         vmax=global_max
     )
 
-    plt.grid(
-       color="white",
-       linewidth=0.5
-    )
+    plt.grid(True, linestyle="--", alpha=0.5)
 
     plt.colorbar(mesh, label="Operations")
 
@@ -242,6 +239,72 @@ for algorithm in algorithms:
     plot_heatmap(df, algorithm, GRAPHS_DIR)"""
 
 # ---------------------------------------------------------
+# Complexity fit table
+# ---------------------------------------------------------
+
+def r2_score(y, y_pred):
+    ss_res = np.sum((y - y_pred) ** 2)
+    ss_tot = np.sum((y - np.mean(y)) ** 2)
+    return 1 - ss_res / ss_tot
+
+def fit_model(x, y, basis):
+
+    coeff = np.polyfit(basis, y, 1)
+
+    prediction = coeff[0] * basis + coeff[1]
+
+    return r2_score(y, prediction)
+
+avg = (
+    df.groupby(["algorithm", "size"])["operations"]
+      .mean()
+      .reset_index()
+)
+
+print("\n")
+print("=" * 72)
+print("Complexity goodness of fit (R²)")
+print("=" * 72)
+
+header = (
+    f"{'Algorithm':<12}"
+    f"{'O(n)':>12}"
+    f"{'O(n log n)':>14}"
+    f"{'O(n√n)':>12}"
+    f"{'O(n²)':>12}"
+)
+
+print(header)
+print("-" * len(header))
+
+for algorithm in avg["algorithm"].unique():
+
+    data = avg[avg["algorithm"] == algorithm]
+
+    n = data["size"].to_numpy(dtype=float)
+    y = data["operations"].to_numpy(dtype=float)
+
+    models = {
+        "size": n,
+        "nlogn": n * np.log2(n),
+        "nsqrtn": n * np.sqrt(n),
+        "n2": n ** 2,
+    }
+
+    r2_linear = fit_model(n, y, models["size"])
+    r2_log = fit_model(n, y, models["nlogn"])
+    r2_sqrt = fit_model(n, y, models["nsqrtn"])
+    r2_quad = fit_model(n, y, models["n2"])
+
+    print(
+        f"{algorithm:<12}"
+        f"{r2_linear:>12.4f}"
+        f"{r2_log:>14.4f}"
+        f"{r2_sqrt:>12.4f}"
+        f"{r2_quad:>12.4f}"
+    )
+
+# ---------------------------------------------------------
 # Grade function
 # ---------------------------------------------------------
 
@@ -270,9 +333,10 @@ df["grade"] = [
 
 # Mapeamento fixo para garantir que cada algoritmo tenha sempre a mesma cor
 ALGORITHM_COLORS = {
-    "simple": "#FEBE10",  #  Yellow
-    "medium": "#90EE90",      # Light-Green
+    "simple": "#FEBE10",   # Yellow
+    "medium": "#90EE90",   # Light-Green
     "complex": "#006400",  # Dark-Green
+	"adaptive": "#0000FF", # Blue
     # Adicione os outros algoritmos do seu benchmark aqui se houver mais
 }
 # Cor padrão caso apareça algum algoritmo novo não listado acima
@@ -281,9 +345,7 @@ DEFAULT_COLOR = "#7f7f7f"  # Cinza
 plt.figure(figsize=(10, 6))
 
 for algorithm in algorithms:
-
     subset = df[df["algorithm"] == algorithm]
-
     grouped = (
         subset
         .groupby("size")["operations"]
@@ -302,15 +364,10 @@ for algorithm in algorithms:
     )
 
 plt.xlabel("Number of parameters")
-
 plt.ylabel("Average operations")
-
 plt.title("Average operations")
-
 plt.legend()
-
 plt.grid(True, linestyle="--", alpha=0.5)
-
 plt.tight_layout()
 
 plt.savefig(
@@ -327,16 +384,13 @@ plt.close()
 plt.figure(figsize=(10, 6))
 
 for algorithm in algorithms:
-
     subset = df[df["algorithm"] == algorithm]
-
     grouped = (
         subset
         .groupby("size")["operations"]
     )
 
     mean = grouped.mean()
-
     std = grouped.std()
 
 	# Busca a cor mapeada para o algoritmo atual
@@ -352,15 +406,10 @@ for algorithm in algorithms:
     )
 
 plt.xlabel("Number of parameters")
-
 plt.ylabel("Operations")
-
 plt.title("Mean ± Standard deviation")
-
 plt.legend()
-
 plt.grid(True, linestyle="--", alpha=0.5)
-
 plt.tight_layout()
 
 plt.savefig(
@@ -368,6 +417,64 @@ plt.savefig(
     dpi=200
 )
 
+plt.close()
+
+# ---------------------------------------------------------
+# Normalized complexity plot
+# ---------------------------------------------------------
+
+avg = (
+    df.groupby(["algorithm", "size"])["operations"]
+      .mean()
+      .reset_index()
+)
+
+fig, ax = plt.subplots(figsize=(12, 7))
+
+for algorithm in avg["algorithm"].unique():
+
+    algo_color2 = ALGORITHM_COLORS.get(algorithm, DEFAULT_COLOR)
+    data = avg[avg["algorithm"] == algorithm].copy()
+
+    n = data["size"].to_numpy()
+    ops = data["operations"].to_numpy()
+
+    if algorithm == "simple":
+        normalized = ops / (n ** 2)
+        label = "simple / n²"
+
+    elif algorithm == "medium":
+        normalized = ops / (n * np.sqrt(n))
+        label = "medium / (n√n)"
+
+    elif algorithm == "complex":
+        normalized = ops / (n * np.log2(n))
+        label = "complex / (n log₂ n)"
+
+    elif algorithm == "adaptive":
+        # Adaptive has no single theoretical complexity.
+        # Normalizing by n log n is a reasonable default.
+        normalized = ops / (n * np.log2(n))
+        label = "adaptive / (n log₂ n)"
+
+    ax.plot(
+        n,
+        normalized,
+        marker="o",
+        linewidth=2,
+        markersize=4,
+        label=label,
+		color=algo_color2
+    )
+
+ax.set_title("Normalized operation count")
+ax.set_xlabel("Number of parameters")
+ax.set_ylabel("Normalized operations")
+ax.grid(True, linestyle="--", alpha=0.5)
+ax.legend()
+
+plt.tight_layout()
+plt.savefig(GRAPHS_DIR / "normalized_operations.png")
 plt.close()
 
 

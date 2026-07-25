@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iscarval <iscarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/23 17:23:49 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/23 19:01:32 by iscarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ void		sort_small(t_stack *a, t_stack *b);
 void		move_to_top(t_stack *stack, int position, char name);
 void		simple_sort(t_stack *a, t_stack *b);
 void		complex_sort(t_stack *a, t_stack *b);
+
+t_node		*find_target_b(t_stack *b, t_node *node);
+void		push_to_b(t_stack *a, t_stack *b);
+t_node		*find_target_a(t_stack *a, t_node *node);
 
 void		assign_indexes(t_stack *a);
 int			find_chunk_position(t_stack *a, int limit);

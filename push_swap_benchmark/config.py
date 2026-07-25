@@ -22,7 +22,7 @@ PUSH_SWAP = BASE_DIR.parent / "push_swap"
 TRIALS = 100
 
 # Sizes to test
-SIZES = list(range(5, 501, 5))
+SIZES = list(range(5, 501, 10))
 
 # Algorithms to test
 ALGORITHMS = [
