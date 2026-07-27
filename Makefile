@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iscarval <iscarval@student.42.fr>          +#+  +:+       +#+         #
+#    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
-#    Updated: 2026/07/23 18:57:09 by iscarval         ###   ########.fr        #
+#    Updated: 2026/07/26 23:27:40 by ferde-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,21 +19,25 @@ INCLUDES = -Iincludes
 
 SRC = \
 	main.c \
-	logic.c \
-	flag_parser.c \
-	stack_creation.c \
-	stack_utils.c \
-	stack_debug.c \
-	operation_push.c \
-	operation_swap.c \
-	operation_rotate.c \
-	operation_reverse_rotate.c \
-	algorithm_small.c \
-	algorithm_simple.c \
-	algorithm_medium.c \
-	algorithm_complex.c \
-	algorithm_complex_utils.c \
-	printer.c
+	core/logic.c \
+	core/flag_parser.c \
+	core/printer.c \
+	stack/stack_creation.c \
+	stack/stack_utils.c \
+	operations/push.c \
+	operations/swap.c \
+	operations/rotate.c \
+	operations/reverse_rotate.c \
+	algorithms/small.c \
+	algorithms/simple.c \
+	algorithms/medium.c \
+	algorithms/complex.c \
+	algorithms/turk.c \
+	algorithms/turk_utils.c \
+	algorithms/turk_cost.c \
+	benchmark/benchmark.c \
+	benchmark/benchmark_print.c \
+	benchmark/benchmark_strategy.c
 
 OBJ = $(SRC:.c=.o)
 

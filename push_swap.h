@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iscarval <iscarval@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/23 19:01:32 by iscarval         ###   ########.fr       */
+/*   Updated: 2026/07/26 19:51:59 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,29 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
+typedef struct s_bench
+{
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+	float	disorder;
+	int		strategy;
+}	t_bench;
+
 typedef struct s_stack
 {
 	t_node	*head;
 	t_node	*tail;
 	int		size;
+	t_bench	*bench;
 }	t_stack;
 
 typedef enum e_strategy
@@ -38,8 +56,15 @@ typedef enum e_strategy
 	STRATEGY_ADAPTIVE,
 	STRATEGY_SIMPLE,
 	STRATEGY_MEDIUM,
-	STRATEGY_COMPLEX
+	STRATEGY_COMPLEX,
+	STRATEGY_TURK
 }	t_strategy;
+
+typedef struct s_config
+{
+	t_strategy	strategy;
+	int			bench_enabled;
+}	t_config;
 
 void		stack_init(t_stack *stack);
 t_node		*node_new(int value);
@@ -53,10 +78,6 @@ int			ft_strcmp(const char *s1, const char *s2);
 int			stack_repeated(t_stack *a);
 float		compute_disorder(t_stack *a);
 int			is_sorted(t_stack *stack);
-
-int			stack_operations_test(t_stack *a, t_stack *b);
-int			stack_valid(t_stack *stack);
-void		stack_print(t_stack *stack, char name, int flag);
 
 void		push(t_stack *src, t_stack *dst);
 void		push_a(t_stack *b, t_stack *a);
@@ -88,11 +109,14 @@ void		sort_three(t_stack *a);
 void		sort_small(t_stack *a, t_stack *b);
 void		move_to_top(t_stack *stack, int position, char name);
 void		simple_sort(t_stack *a, t_stack *b);
-void		complex_sort(t_stack *a, t_stack *b);
+void		complex_sort(t_stack *a, t_stack *b); 
 
 t_node		*find_target_b(t_stack *b, t_node *node);
 void		push_to_b(t_stack *a, t_stack *b);
 t_node		*find_target_a(t_stack *a, t_node *node);
+int			get_move_cost(t_stack *stack, t_node *node);
+t_node		*find_cheapest(t_stack *a, t_stack *b);
+void		turk_sort(t_stack *a, t_stack *b);
 
 void		assign_indexes(t_stack *a);
 int			find_chunk_position(t_stack *a, int limit);
@@ -107,5 +131,13 @@ int			ft_printf(const char *string, ...);
 
 int			is_strategy_flag(char *arg);
 t_strategy	parse_strategy(char *arg);
+
+void		bench_init(t_bench *bench);
+void		bench_count(t_bench *bench, char *op);
+void		bench_count_rotate(t_bench *bench, char *op);
+void		bench_count_reverse(t_bench *bench, char *op);
+int			bench_total(t_bench *bench);
+void		bench_print(t_bench *bench);
+void		bench_print_strategy(t_bench *bench);
 
 #endif

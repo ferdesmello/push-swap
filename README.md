@@ -1,94 +1,672 @@
 *This project has been created as part of the 42 curriculum by iscarval and ferde-so.*
 
-# Push Swap
+# Push_swap
 
 ## Description
 
-`push_swap` is...
+**Push_swap** is an algorithmic sorting project from the 42 curriculum.
 
-The main goal of this project is...
+The objective is to sort a sequence of integers using two stacks, `a` and `b`, and a restricted set of operations, while generating as few Push_swap instructions as possible.
 
-### Files
+At the beginning:
 
-- `main.c` - the main function that gets the parameters.
-- `flag_parser.c` - functions to parse the flags.
-- `printer` - functions to print characters on the standard output.
-- `stack_creation.c` - functions to create nodes and stacks, and to clear them.
-- `stack_utils.c` - auxiliar functions to validade the parameters.
-- `stack_debug.c` - auxiliar functions to validade the stacks.
-- `logic.c` - the logic functions that call the other functions.
-- `operation_push.c` - push operations.
-- `operation_swap.c` - swap operations.
-- `operation_rotate.c` - rotate operations.
-- `operation_reverse_rotate.c` - reverse rotate operations.
-- `algorithm_small.c` - functions for sorting short stacks.
-- `algorithm_simple` - functions to sort by the simple algorithm.
-- `algorithm_medium` - functions to sort by the medium algorithm.
-- `algorithm_complex` - functions to sort by the complex algorithm.
+- Stack `a` contains all input integers.
+- Stack `b` is empty.
+- The first argument represents the top of stack `a`.
 
-### Functions
+The program outputs the sequence of Push_swap operations required to sort stack `a` in ascending order.
 
-...
+This implementation provides four sorting strategies:
+
+- Simple
+- Medium
+- Complex
+- Adaptive
+
+The Adaptive strategy analyzes the initial disorder of the input and automatically selects a sorting method.
+
+The project also provides a `--bench` mode to inspect the disorder, selected strategy, complexity class and generated operations.
+
+---
 
 ## Instructions
 
-After cloning or downloading the repository, compile and use the program like this:
+### Compilation
 
-1. Open a terminal in the `push_swap` directory.
-2. Run `make` to build the program.
-
-Example:
+Compile the project with:
 
 ```sh
 make
 ```
 
-To clean build files:
+The project is compiled using:
+
+```text
+-Wall -Wextra -Werror
+```
+
+Available Makefile rules:
 
 ```sh
+make
 make clean
-```
-
-To remove compiled objects and the executable:
-
-```sh
 make fclean
-```
-
-To rebuild everything from scratch:
-
-```sh
 make re
 ```
 
-One example of how to run the program with parameters:
+### Basic Usage
 
 ```sh
-./push_swap 5 200 0 4 -50 25
+./push_swap 5 2 8 1 3
 ```
 
-Where `5 200 0 4 -50 25` is any sequence of integers.
+The program prints one Push_swap instruction per line.
 
-Other option:
+If no strategy flag is provided, the Adaptive strategy is used by default.
 
+### Strategy Selection
+
+Force the Simple strategy:
+
+```sh
+./push_swap --simple 5 2 8 1 3
 ```
-./push_swap 100 99 98 97 96 95 94 93 92 91 90 89 88 87 86 85 84 83 82 81 80 79 78 77 76 75 74 73 72 71 70 69 68 67 66 65 64 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+
+Force the Medium strategy:
+
+```sh
+./push_swap --medium 5 2 8 1 3
 ```
 
+Force the Complex strategy:
+
+```sh
+./push_swap --complex 5 2 8 1 3
 ```
-./push_swap --medium -347 -343 -238 333 342 430 -244 133 -483 -450 -406 55 -479 -33 -368 -12 304 252 414 -434 -196 -237 -101 -361 -315 490 106 6 -84 -221 -121 444 336 -338 407 142 -140 -297 -451 -325 391 257 -73 472 326 -272 144 -372 -416 412 268 -152 182 147 149 23 63 416 285 -10 -253 5 389 -290 -71 -51 -296 162 348 -119 163 487 421 282 78 377 -280 -488 101 -37 -189 -285 254 -427 363 226 228 -356 224 -75 122 180 -45 48 -108 382 88 -6 284 -447 334 366 -425 -449 -142 185 37 -262 -468 380 -216 265 -24 174 435 396 216 47 -182 337 -86 49 -91 35 339 291 52 -494 -417 87 -173 -443 -134 -261 56 -42 -419 12 80 -302 500 139 -210 -222 130 -69 199 -176 379 -44 -163 411 431 -255 196 -392 279 300 -459 -215 290 393 315 -467 375 305 246 83 10 190 198 154 -170 -433 -232 232 -199 -9 -83 217 -429 -444 -257 -41 -168 -50 172 109 453 137 -337 369 211 -498 -345 -275 -402 419 136 -370 -258 -14 -362 -477 364 -268 -70 179 -380 223 102 -104 -2 -437 107 256 497 -482 475 354 -271 -201 -375 86 -484 -287 427 255 368 341 485 -424 192 -397 359 -151 124 288 -445 295 -113 -311 372 100 -155 -500 -114 443 367 145 -126 325 376 95 230 -52 68 397 181 -323 465 -478 370 383 128 -138 -212 140 299 -164 450 -144 165 -469 -159 392 405 -172 -147 125 -492 -68 156 -379 479 64 229 -348 -252 -180 -465 103 -439 119 1 75 455 -486 -239 24 | wc -l
+
+Force the Adaptive strategy:
+
+```sh
+./push_swap --adaptive 5 2 8 1 3
 ```
 
+---
 
+## Push_swap Operations
+
+The following operations are available:
+
+| Operation | Description |
+|---|---|
+| `sa` | Swap the first two elements of stack `a` |
+| `sb` | Swap the first two elements of stack `b` |
+| `ss` | Execute `sa` and `sb` simultaneously |
+| `pa` | Push the first element of `b` to `a` |
+| `pb` | Push the first element of `a` to `b` |
+| `ra` | Rotate stack `a` |
+| `rb` | Rotate stack `b` |
+| `rr` | Execute `ra` and `rb` simultaneously |
+| `rra` | Reverse rotate stack `a` |
+| `rrb` | Reverse rotate stack `b` |
+| `rrr` | Execute `rra` and `rrb` simultaneously |
+
+---
+
+# Sorting Strategies
+
+The project implements different strategies so that different input configurations can be handled appropriately.
+
+In this project, complexity classes refer to the Push_swap operation model: the number of stack operations generated by a strategy, rather than only the internal execution time of the C code.
+
+## Small Inputs
+
+Inputs containing five elements or fewer are handled by specialized functions.
+
+### Two elements
+
+For two elements, the program checks whether they are reversed and uses `sa` when necessary.
+
+### Three elements
+
+For three elements, the maximum value is located and rotations are used to place it correctly. A final swap is performed when required.
+
+### Four and five elements
+
+The smallest elements are moved to stack `b` until three elements remain in `a`.
+
+The three remaining elements are sorted and the stored minimum elements are pushed back to `a`.
+
+Using specialized logic avoids applying a larger general-purpose strategy to very small inputs.
+
+---
+
+## Simple Strategy — O(n²) Class
+
+The Simple strategy is based on repeated minimum extraction.
+
+For each iteration:
+
+1. Find the minimum value in stack `a`.
+2. Find its position.
+3. Rotate or reverse rotate `a` using the shortest direction.
+4. Push the minimum to stack `b`.
+5. Repeat until `a` is empty.
+6. Push every element back to `a`.
+
+For one element, moving it to the top can require a linear number of Push_swap operations.
+
+Repeating this process for `n` elements gives a quadratic upper bound in the Push_swap operation model:
+
+```text
+O(n²)
 ```
-./push_swap -374 144 -417 -488 291 332 -318 -287 -306 82 -223 357 -18 101 303 -34 461 422 -133 438 -201 339 343 -383 -403 -156 -36 290 37 292 -497 -486 -344 11 347 199 -26 -323 324 -184 -92 406 156 -214 -118 -472 -102 146 17 380 -376 244 96 -158 -481 71 166 -134 -233 -182 -173 451 -424 285 -176 216 52 -168 335 -94 -215 130 399 -69 39 90 -237 -397 219 -144 -274 -290 168 -136 -191 -59 320 271 -236 -430 -188 136 -467 187 364 -457 311 197 -75 432 204 31 372 143 -357 -440 -142 304 417 225 153 102 -151 -217 454 -29 -370 -22 -299 -369 -245 -366 293 151 13 91 -243 30 472 -355 -285 475 428 330 38 -211 -469 -105 -454 -13 -412 238 59 -88 -473 154 -433 315 407 202 -448 -490 114 249 251 124 -248 -103 -85 450 45 312 184 -277 -375 286 -324 381 -43 110 175 -164 -109 -25 108 405 492 -66 167 -220 -316 205 231 103 214 483 -328 -97 436 322 268 159 391 353 -121 -74 135 361 190 19 440 477 8 -314 -128 81 489 -20 -480 158 198 -384 208 -343 -141 -466 -179 -218 -187 494 -14 410 385 -200 443 359 -33 396 152 -166 -269 250 370 334 -198 278 388 -447 439 -250 376 495 -222 317 56 186 309 171 310 149 493 418 265 183 -495 160 206 7 79 180 -120 -93 69 211 -419 -192 296 470 -230 344 275 237 281 466 305 -139 390 -386 -434 -79 -57 -162 89 -37 86 -19 0 212 195 393 -213 -48 349 -110 -51 97 -399 -317 424 -425 2 -27 -415 -12 117 -178 -7 -265 10 -80 -461 367 430 -342 -172 -60 131 -298 -261 345 -137 -346 -500 445 1 -313 -138 -104 -341 -281 -390 -326 -203 -82 302 68 -257 323 331 -303 -398 -181 -235 -478 62 -333 -491 245 252 -354 20 -119 -71 -320 -127 -143 453 -332 -89 379 92 -401 -76 40 480 325 288 -315 -379 328 -492 254 -487 -275 -55 411 -286 -422 398 365 -310 401 300 -371 -125 127 458 -463 -44 193 277 -474 196 -361 18 119 24 120 12 456 -276 481 -130 276 49 427 354 29 -167 -155 -296 -442 -445 -389 316 -426 -418 104 132 375 191 298 378 -336 350 -254 239 60 -146 185 21 346 6 -393 246 -409 -263 169 106 -363 181 -301 -284 240 -485 -405 397 421 -238 382 435 200 318 -72 297 -322 389 5 -365 217 -309 -206 -70 -247 46 355 -193 55 -67 -107 -352 126 178 448 -450 140 -443 -335 54 473 487 43 -58 262 155 -126 465 -307 431 -329 -229 -177 -255 -244 -431 -131 -253 -61 234 -292 | wc -l
+
+This strategy is simple and predictable and is particularly suitable for the low-disorder regime of the Adaptive strategy.
+
+---
+
+## Medium Strategy — O(n√n) Class
+
+The Medium strategy uses a **chunk-based approach**.
+
+Before sorting, each node receives an index representing its position in the fully sorted sequence.
+
+The algorithm then:
+
+1. Divides the indexed values into ranges/chunks.
+2. Searches for elements belonging to the current range.
+3. Moves those elements from stack `a` to stack `b`.
+4. Organizes elements inside `b` using rotations.
+5. Finds the next largest indexed element in `b`.
+6. Moves it to the top.
+7. Pushes it back to `a`.
+
+Chunking reduces the amount of stack traversal required compared with the Simple strategy and is used as the project's medium-complexity strategy.
+
+The strategy targets the required:
+
+```text
+O(n√n)
 ```
-## Resources
 
-References used during development...
+Push_swap operation class.
 
-AI usage...
+The implementation uses empirically selected chunk sizes for the input ranges targeted by the project.
 
-## Algorithms 
+---
+## Complex Strategy — O(n log n) Class
 
-> A detailed explanation and justification of the algorithms selected for this project must also be included.
+The Complex strategy is based on the **radix approach**...
+
+...
+
+```text
+O(n log n)
+```
+
+...
+
+## Complex Strategy — Turk / Cost-Based Strategy
+
+The Complex strategy is based on the **Turk algorithm approach**, using movement-cost analysis to minimize the number of generated Push_swap operations.
+
+Instead of moving elements according to fixed ranges, the algorithm evaluates candidate movements before executing them.
+
+### Target nodes
+
+For an element in stack `a`, the algorithm searches stack `b` for its target position.
+
+When elements are later returned to `a`, the corresponding target position in `a` is calculated.
+
+### Movement cost
+
+For a candidate node, the program calculates:
+
+- Its position in stack `a`.
+- Its target position in stack `b`.
+- Whether each position is cheaper to reach with rotate or reverse rotate.
+- The combined cost of both movements.
+
+### Cheapest node
+
+The algorithm evaluates the candidates and selects the node with the lowest calculated movement cost.
+
+### Combined rotations
+
+When both stacks need to rotate in the same direction, operations can be combined.
+
+Instead of:
+
+```text
+ra
+rb
+```
+
+the algorithm can use:
+
+```text
+rr
+```
+
+Likewise:
+
+```text
+rra
+rrb
+```
+
+can become:
+
+```text
+rrr
+```
+
+This reduces the number of emitted Push_swap operations.
+
+### Final phase
+
+Once only three elements remain in stack `a`:
+
+1. The three elements are sorted.
+2. Elements from `b` are inserted back into their target positions in `a`.
+3. The minimum element is moved to the top.
+
+This cost-based strategy is used as the project's Complex strategy and is designed to achieve the performance targets associated with the required Complex class.
+
+---
+
+# Adaptive Strategy
+
+The Adaptive strategy chooses an internal sorting method according to the initial disorder of stack `a`.
+
+The disorder is calculated **before any sorting operation is performed**.
+
+## Disorder Metric
+
+Every possible pair of elements is inspected.
+
+For a pair `(i, j)`, where `j > i`, an inversion exists when:
+
+```text
+a[i] > a[j]
+```
+
+The disorder is:
+
+```text
+disorder = number of inversions / total number of pairs
+```
+
+Therefore:
+
+```text
+0.0 = completely sorted
+1.0 = completely reversed
+```
+
+A partially ordered input produces a value between these two extremes.
+
+## Adaptive Thresholds
+
+The strategy uses the following thresholds:
+
+| Disorder | Internal strategy | Target class |
+|---|---|---|
+| `< 0.20` | Simple | O(n²) |
+| `0.20 <= disorder < 0.50` | Medium | O(n√n) |
+| `>= 0.50` | Complex | O(n log n) class |
+
+### Why these thresholds?
+
+A low-disorder input is already relatively close to its final order, so the straightforward Simple strategy is sufficient.
+
+For medium disorder, chunk-based organization provides a balance between simple extraction and the more elaborate cost analysis of the Complex strategy.
+
+Highly disordered inputs benefit from the Complex strategy, which evaluates movement costs and combines rotations to reduce the total number of generated instructions.
+
+This allows the program to adapt its behavior to the structure of the input instead of applying the same strategy to every sequence.
+
+
+# Complexity Analysis
+
+A theoretical analysis of each algorithm and code could produce a more definitive result. Still, we decided on a more empirical analysis and investigated the behavior of the algorithms for different quantities of n and disorder. We ran all the algorithms for a range of n values up to 5000 and compared the results. We tested three methods:
+
+* $R^{2}$ - We fitted all three O over complexity functions over the data produced for each algorithm and checked which one produced the best $R^{2}$ (closer to 1 is better).
+* $k$ exponent - We fitted $n^{k}$ over the data produced for each algorithm and checked if the exponent $k$ is closer to the expectation for that algorithmic complexity.
+* Flattening - We divided the data produced for each algorithm by the expected O complexity functions. If it was the right functions, the results (over large n) would flatten; we would have a horizontal line.
+
+None of the methods is perfect, as the O complexity gives an upper limit, not a normal operation expectation, and the data used is very limited, as the O complexity would work over n → ∞. But the results are consistent, with the curve flattening and the fits producing the results below.
+
+Complexity Analysis: Goodness of Fit (R²) & Growth Exponent (k) for n up to 5000
+| Algorithm  | O(n)   | O(n log n) | O(n√n) | O(n²)  | Exp (k) | Expected |
+|--------|--------|------------|--------|--------|---------|----------|
+| adaptive   | 0.9457 | 0.9588     | 0.9400 | 0.9051 | 1.35    |     ?    |
+| complex    | 0.9937 | **0.9964**     | 0.9887 | 0.9579 | 1.27    | ~1.0-1.3 |
+| medium     | 0.9649 | 0.9775     | **0.9977** | 0.9952 | 1.41    | ~1.5     |
+| simple     | 0.9360 | 0.9534     | 0.9876 | **1.0000** | 1.91    | ~2.0     |
+
+---
+
+# Benchmark Mode
+
+Benchmark mode is enabled using:
+
+```sh
+--bench
+```
+
+For example:
+
+```sh
+./push_swap --bench --adaptive 8 3 6 1 7 2 5 4
+```
+
+The normal Push_swap instruction stream continues to be written to `stdout`.
+
+Benchmark information is written exclusively to `stderr`, so it does not interfere with pipes or the Push_swap checker.
+
+Example:
+
+```text
+[bench] disorder: 60.71%
+[bench] strategy: adaptive -> complex / O(n log n)
+[bench] total_ops: 18
+[bench] sa: 1
+[bench] sb: 0
+[bench] ss: 0
+[bench] pa: 5
+[bench] pb: 5
+[bench] ra: 1
+[bench] rb: 0
+[bench] rr: 0
+[bench] rra: 5
+[bench] rrb: 1
+[bench] rrr: 0
+```
+
+Benchmark mode reports:
+
+- Initial disorder percentage with two decimal places
+- Selected strategy
+- Strategy complexity class
+- Total number of Push_swap operations
+- Individual count of all 11 operations
+
+---
+
+# Performance
+
+The project was tested with random inputs of different sizes.
+
+The Complex/Turk implementation typically produces approximately:
+
+```text
+100 elements: ~550–600 operations
+500 elements: ~5,000 operations
+```
+
+During development, repeated tests with 500 random values produced results around:
+
+```text
+4976
+4983
+5060
+5116
+5069
+5159
+5063
+4969
+4977
+5024
+```
+
+These results are within the excellent-performance range defined by the project benchmark for 500 elements.
+
+Performance can vary depending on the input configuration.
+
+---
+
+# Testing
+
+## Checker
+
+The generated instructions can be validated using the provided checker:
+
+```sh
+ARG="8 3 6 1 7 2 5 4"
+./push_swap --complex $ARG | ./checker_linux $ARG
+```
+
+Expected result:
+
+```text
+OK
+```
+
+### Random checker tests
+
+```sh
+for i in {1..10}; do
+	ARG=$(shuf -i 1-1000 -n 100)
+	./push_swap --complex $ARG | ./checker_linux $ARG
+done
+```
+
+Every execution should return:
+
+```text
+OK
+```
+
+---
+
+## Operation Count
+
+For 100 random integers:
+
+```sh
+ARG=$(shuf -i 1-1000 -n 100)
+./push_swap --complex $ARG | wc -l
+```
+
+For 500 random integers:
+
+```sh
+ARG=$(shuf -i 1-10000 -n 500)
+./push_swap --complex $ARG | wc -l
+```
+
+---
+
+## Benchmark and Checker
+
+Because benchmark information is sent to `stderr`, benchmark mode remains compatible with the checker:
+
+```sh
+ARG=$(shuf -i 1-1000 -n 100)
+./push_swap --bench --adaptive $ARG | ./checker_linux $ARG
+```
+
+The benchmark is displayed in the terminal while only Push_swap operations are piped to the checker.
+
+---
+
+## Memory Testing
+
+Valgrind can be used to verify memory management:
+
+```sh
+ARG=$(shuf -i 1-1000 -n 100)
+
+valgrind --leak-check=full --show-leak-kinds=all \
+	./push_swap --bench --adaptive $ARG > /dev/null
+```
+
+A successful test should include:
+
+```text
+in use at exit: 0 bytes in 0 blocks
+All heap blocks were freed -- no leaks are possible
+ERROR SUMMARY: 0 errors from 0 contexts
+```
+
+---
+
+# Error Handling
+
+Invalid input prints:
+
+```text
+Error
+```
+
+to `stderr`.
+
+Examples:
+
+```sh
+./push_swap 1 2 2
+./push_swap 1 abc 3
+./push_swap 2147483648
+./push_swap -2147483649
+```
+
+The program validates cases including:
+
+- Non-integer arguments
+- Duplicate values
+- Integer overflow
+- Integer underflow
+- Invalid argument sequences
+
+---
+
+# Project Structure
+
+<pre>
+├── main.c — program entry point and configuration
+├── core
+│   ├── flag_parser.c — strategy flag parsingAdaptive logic
+│   ├── logic.c — strategy selection and Adaptive logic
+│   └── printer.c — output utilities
+├── stack
+│   ├── stack_creation.c — stack initialization and node creation
+│   └── stack_utils.c — stack validation and utility functions
+├── operations
+│   ├── push.c — `pa` and `pb`
+│   ├── swap.c — `sa`, `sb` and `ss`
+│   ├── rotate.c — `ra`, `rb` and `rr`
+│   └── reverse_rotate.c — `rra`, `rrb` and `rrr`
+├── algorithms
+│   ├── small.c — specialized sorting for up to five elements
+│   ├── simple.c — minimum-extraction Simple strategy
+│   ├── medium.c — chunk-based Medium strategy
+│   ├── complex.c — radic-based Complex strategy
+│   ├── turk.c — main Turk logic
+│   ├── turk_utils.c — targets and movement execution
+│   └── turk_cost.c — movement-cost calculation and cheapest-node selection
+└── benchmark
+    ├── benchmark.c` — benchmark data and operation counters
+    ├── benchmark_print.c` — benchmark output
+    └── benchmark_strategy.c` — strategy and complexity reporting
+</pre>
+
+---
+
+# Team Contributions
+
+This project was developed collaboratively by **iscarval** and **ferde-so**.
+Both members participated in the design, debugging, testing and review of the
+final implementation and understand all parts of the project.
+
+## iscarval
+
+Main contributions included:
+
+- Development of stack utility and sorting helper functions
+- Development of the Small sorting strategy
+- Work on the Simple sorting strategy
+- Development and optimization of the Complex/Turk strategy
+- Movement-cost and cheapest-node optimization
+- Optimization using simultaneous rotations (`rr` and `rrr`)
+- Implementation of the benchmark system
+- Disorder measurement and Adaptive strategy integration
+- Performance testing with random inputs
+- Checker, Norminette and Valgrind validation
+- Final integration and documentation
+
+## ferde-so
+
+Main contributions included:
+
+- Development of the initial stack structure and stack operations
+- Implementation and testing of push, swap and rotation operations
+- Input validation and stack utilities
+- Work on the Simple sorting strategy
+- Development and optimization of the Medium/chunk strategy
+- Optimization of chunk searches using both ends of the stack
+- Participation in algorithm design and performance optimization
+- Testing, debugging and code review
+- Algorithm complexity analysis
+
+## Collaborative Work
+
+Algorithm selection, the Adaptive strategy, performance analysis, debugging
+and final project validation were discussed and reviewed collaboratively.
+
+Both members are able to explain and defend the complete implementation,
+regardless of the original author of each function.
+
+---
+
+# Resources
+
+The following resources were used during the development and study of the project:
+
+- **42 Push_swap Subject**  
+  Official project requirements, mandatory operations, complexity classes,
+  benchmark requirements and evaluation criteria.
+
+- **Acelera Push Swap — Complete Guide (Notion)**  
+  A study guide used to better understand the Push_swap project, its structure,
+  sorting strategies and implementation concepts.  
+  https://rodsmade.notion.site/Acelera-Push_swap-083ab844f9b44456a176e4e4c875bc73#02105678d6454d8b9f250fd1b5120575
+
+- **Push Swap Game**  
+  An interactive tool used to visualize and understand how Push_swap operations
+  affect stacks before implementing them in C.  
+  https://phemsi-a.itch.io/push-swap
+
+- **C Manual Pages**  
+  Used as reference for C functions, memory management and system calls.
+
+- **Valgrind Documentation**  
+  Used for memory leak detection and memory-error testing.
+
+- **Git Documentation**  
+  Used for version control and collaborative development.
+
+- **Peer Discussions and Code Review**  
+  Algorithm design, implementation decisions, debugging and optimization were
+  discussed and reviewed collaboratively by both project members.
+
+## AI Usage
+
+AI tools were used as a learning and development support resource.
+
+AI assistance was used for:
+
+- Comparing possible sorting strategies
+- Understanding Push_swap algorithm concepts
+- Studying the Turk algorithm approach
+- Discussing movement-cost optimization
+- Explaining stack operations and pointer manipulation
+- Debugging compilation and Norminette errors
+- Designing benchmark tests
+- Reviewing edge cases
+- Analyzing operation counts
+- Improving project documentation
+
+AI-generated suggestions were reviewed, tested and discussed during development rather than being treated as automatically correct.
+
+The project members remain responsible for understanding, validating and defending the submitted implementation.
