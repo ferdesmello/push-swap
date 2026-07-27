@@ -1,6 +1,6 @@
 # Executáveis
 push_swap
-checker
+checker_linux
 
 # Objetos
 *.o
