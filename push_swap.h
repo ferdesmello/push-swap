@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/26 19:51:59 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:09:31 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,7 @@ void		sort_three(t_stack *a);
 void		sort_small(t_stack *a, t_stack *b);
 void		move_to_top(t_stack *stack, int position, char name);
 void		simple_sort(t_stack *a, t_stack *b);
-void		complex_sort(t_stack *a, t_stack *b); 
-
-t_node		*find_target_b(t_stack *b, t_node *node);
-void		push_to_b(t_stack *a, t_stack *b);
-t_node		*find_target_a(t_stack *a, t_node *node);
-int			get_move_cost(t_stack *stack, t_node *node);
-t_node		*find_cheapest(t_stack *a, t_stack *b);
-void		turk_sort(t_stack *a, t_stack *b);
+void		complex_sort(t_stack *a, t_stack *b);
 
 void		assign_indexes(t_stack *a);
 int			find_chunk_position(t_stack *a, int limit);

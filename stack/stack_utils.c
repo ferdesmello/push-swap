@@ -6,13 +6,12 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:19 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:37 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:12:38 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function checks if a string represents a valid number */
 int	is_number(const char *s)
 {
 	int	i;
@@ -33,7 +32,6 @@ int	is_number(const char *s)
 	return (1);
 }
 
-/* This function converts a string to an integer */
 long	ft_atoi(const char *nptr)
 {
 	long	number;
@@ -61,7 +59,6 @@ long	ft_atoi(const char *nptr)
 	return (number);
 }
 
-/* This function checks if the stack has repeated values */
 int	stack_repeated(t_stack *a)
 {
 	t_node	*node_i;
@@ -86,7 +83,6 @@ int	stack_repeated(t_stack *a)
 	return (1);
 }
 
-/* This function calculates the disorder of the given a stack */
 float	compute_disorder(t_stack *a)
 {
 	float	mistakes;
@@ -116,7 +112,6 @@ float	compute_disorder(t_stack *a)
 	return (mistakes / total_pairs);
 }
 
-/*This function checks if the stack is sorted*/
 int	is_sorted(t_stack *stack)
 {
 	t_node	*current;

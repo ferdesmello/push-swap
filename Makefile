@@ -6,7 +6,7 @@
 #    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
-#    Updated: 2026/07/26 23:27:40 by ferde-so         ###   ########.fr        #
+#    Updated: 2026/07/28 20:09:22 by ferde-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,6 @@ SRC = \
 	algorithms/simple.c \
 	algorithms/medium.c \
 	algorithms/complex.c \
-	algorithms/turk.c \
-	algorithms/turk_utils.c \
-	algorithms/turk_cost.c \
 	benchmark/benchmark.c \
 	benchmark/benchmark_print.c \
 	benchmark/benchmark_strategy.c

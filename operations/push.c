@@ -6,13 +6,12 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:19 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:50 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 23:59:43 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function pushes the top element from one stack to another */
 void	push(t_stack *src, t_stack *dst)
 {
 	t_node	*node;
@@ -36,7 +35,6 @@ void	push(t_stack *src, t_stack *dst)
 	src->size--;
 }
 
-/* This function pushes the top element of stack b to the top of stack a */
 void	push_a(t_stack *b, t_stack *a)
 {
 	push(b, a);
@@ -45,7 +43,6 @@ void	push_a(t_stack *b, t_stack *a)
 	write(1, "pa\n", 3);
 }
 
-/* This function pushes the top element of stack a to the top of stack b */
 void	push_b(t_stack *a, t_stack *b)
 {
 	push(a, b);

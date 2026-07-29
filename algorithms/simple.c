@@ -6,13 +6,12 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 17:44:54 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/26 19:55:05 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:10:44 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function finds the maximum value in the stack nodes */
 t_node	*find_max(t_stack *stack)
 {
 	t_node	*current;
@@ -31,7 +30,6 @@ t_node	*find_max(t_stack *stack)
 	return (max);
 }
 
-/* This function finds the minimum value in the stack nodes */
 t_node	*find_min(t_stack *stack)
 {
 	t_node	*current;
@@ -50,7 +48,6 @@ t_node	*find_min(t_stack *stack)
 	return (min);
 }
 
-/* This function finds the position of a node in the stack */
 int	find_position(t_stack *stack, t_node *node)
 {
 	t_node	*current;
@@ -70,7 +67,6 @@ int	find_position(t_stack *stack, t_node *node)
 	return (-1);
 }
 
-/* This function moves a node to the top of the stack */
 void	move_to_top(t_stack *stack, int position, char name)
 {
 	int	moves;
@@ -99,7 +95,6 @@ void	move_to_top(t_stack *stack, int position, char name)
 	}
 }
 
-/* This function sorts the stack using a simple complexity algorithm */
 void	simple_sort(t_stack *a, t_stack *b)
 {
 	t_node	*min;

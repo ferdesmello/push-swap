@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 16:00:52 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:24 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:11:22 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,10 @@ static void	run_strategy(t_stack *a, t_stack *b,
 		medium_sort(a, b);
 	else if (strategy == STRATEGY_COMPLEX)
 		complex_sort(a, b);
-	else if (strategy == STRATEGY_TURK)
-		turk_sort(a, b);
 	else
 		adaptive_sort(a, b, disorder);
 }
 
-/* This function selects the best algorithm to sort the stack */
 void	algo(t_stack *a, t_stack *b, t_strategy strategy)
 {
 	float	disorder;
@@ -52,8 +49,6 @@ void	algo(t_stack *a, t_stack *b, t_strategy strategy)
 		run_strategy(a, b, strategy, disorder);
 }
 
-/* This function selects the best algorithm 
-based on the disorder of the stack */
 void	adaptive_sort(t_stack *a, t_stack *b, float disorder)
 {
 	if (disorder < 0.2)

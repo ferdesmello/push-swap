@@ -6,13 +6,12 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:35:46 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:44 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/29 00:00:08 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function swaps the first two nodes in a stack */
 void	swap(t_stack *stack)
 {
 	t_node	*first;
@@ -33,7 +32,6 @@ void	swap(t_stack *stack)
 		stack->tail = first;
 }
 
-/* This function swaps the first two nodes in the stack a*/
 void	swap_a(t_stack *a)
 {
 	swap(a);
@@ -42,7 +40,6 @@ void	swap_a(t_stack *a)
 	write(1, "sa\n", 3);
 }
 
-/* This function swaps the first two nodes in the stack b*/
 void	swap_b(t_stack *b)
 {
 	swap(b);
@@ -51,7 +48,6 @@ void	swap_b(t_stack *b)
 	write(1, "sb\n", 3);
 }
 
-/* This function swaps the first two nodes in the stack a and b*/
 void	swap_ab(t_stack *a, t_stack *b)
 {
 	swap(a);

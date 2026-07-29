@@ -6,13 +6,12 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:05 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:40 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:12:23 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function initializes a stack */
 void	stack_init(t_stack *stack)
 {
 	stack->head = NULL;
@@ -21,7 +20,6 @@ void	stack_init(t_stack *stack)
 	stack->bench = NULL;
 }
 
-/* This function creates a new node */
 t_node	*node_new(int value)
 {
 	t_node	*new_node;
@@ -36,7 +34,6 @@ t_node	*node_new(int value)
 	return (new_node);
 }
 
-/* This function adds a node to the back of the stack */
 int	stack_add_back(t_stack *stack, t_node *new_node)
 {
 	if (!stack || !new_node)
@@ -58,7 +55,6 @@ int	stack_add_back(t_stack *stack, t_node *new_node)
 	return (1);
 }
 
-/* This function loads the a stack with the provided arguments */
 int	stack_load(t_stack *a, int argc, char **argv, int start)
 {
 	int		i;
@@ -85,7 +81,6 @@ int	stack_load(t_stack *a, int argc, char **argv, int start)
 	return (1);
 }
 
-/* This function clears the stack (frees all nodes) */
 void	stack_clear(t_stack *stack)
 {
 	t_node	*current;

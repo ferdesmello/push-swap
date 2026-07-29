@@ -6,20 +6,18 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 16:52:33 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:22 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:11:33 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function prints a character in the standard output */
 int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-/* This function prints an integer in the standard output */
 int	ft_putnbr(int n)
 {
 	long int	long_n;
@@ -44,7 +42,6 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-/* This function prints a float in the standard output */
 int	ft_putflt(double n)
 {
 	int			count;
@@ -74,7 +71,6 @@ int	ft_putflt(double n)
 	return (count);
 }
 
-/* This function selects which printing function to call */
 static int	ft_type(char type, va_list *args)
 {
 	if (type == 'c')
@@ -86,7 +82,6 @@ static int	ft_type(char type, va_list *args)
 	return (0);
 }
 
-/* This function prints on the standard output */
 int	ft_printf(const char *string, ...)
 {
 	va_list	args;

@@ -6,13 +6,12 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 16:40:14 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/26 19:55:04 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:10:53 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function pushes the smallest element to stack b */
 static void	push_min_to_b(t_stack *a, t_stack *b)
 {
 	t_node	*min;
@@ -24,14 +23,12 @@ static void	push_min_to_b(t_stack *a, t_stack *b)
 	push_b(a, b);
 }
 
-/* This function sorts stacks of 2 nodes */
 void	sort_two(t_stack *a)
 {
 	if (a->head->value > a->head->next->value)
 		swap_a(a);
 }
 
-/* This function sorts stacks of 3 nodes */
 void	sort_three(t_stack *a)
 {
 	t_node	*max;

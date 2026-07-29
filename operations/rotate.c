@@ -6,14 +6,12 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:58 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:46 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/29 00:00:01 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* This function rotates the elements in a stack, 
-moving the top element to the bottom */
 void	rotate(t_stack *stack)
 {
 	t_node	*node;
@@ -29,7 +27,6 @@ void	rotate(t_stack *stack)
 	node->next = NULL;
 }
 
-/* This function rotates stack a */
 void	rotate_a(t_stack *a)
 {
 	rotate(a);
@@ -38,7 +35,6 @@ void	rotate_a(t_stack *a)
 	write(1, "ra\n", 3);
 }
 
-/* This function rotates stack b */
 void	rotate_b(t_stack *b)
 {
 	rotate(b);
@@ -47,7 +43,6 @@ void	rotate_b(t_stack *b)
 	write(1, "rb\n", 3);
 }
 
-/* This function rotates stack a and stack b */
 void	rotate_ab(t_stack *a, t_stack *b)
 {
 	rotate(a);
