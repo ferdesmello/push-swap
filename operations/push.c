@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:19 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/28 23:59:43 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 01:21:49 by isabelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	push_a(t_stack *b, t_stack *a)
 	push(b, a);
 	if (a->bench)
 		bench_count(a->bench, "pa");
-	write(1, "pa\n", 3);
+	print_operation("pa\n");
 }
 
 void	push_b(t_stack *a, t_stack *b)
@@ -48,5 +48,5 @@ void	push_b(t_stack *a, t_stack *b)
 	push(a, b);
 	if (a->bench)
 		bench_count(a->bench, "pb");
-	write(1, "pb\n", 3);
+	print_operation("pb\n");
 }

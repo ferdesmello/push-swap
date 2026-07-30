@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
+#    By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
-#    Updated: 2026/07/28 20:09:22 by ferde-so         ###   ########.fr        #
+#    Updated: 2026/07/30 01:27:03 by isabelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = \
 	operations/swap.c \
 	operations/rotate.c \
 	operations/reverse_rotate.c \
+	operations/operation_print.c \
 	algorithms/small.c \
 	algorithms/simple.c \
 	algorithms/medium.c \

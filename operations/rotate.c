@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:58 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/29 00:00:01 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 01:23:45 by isabelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rotate_a(t_stack *a)
 	rotate(a);
 	if (a->bench)
 		bench_count_rotate(a->bench, "ra");
-	write(1, "ra\n", 3);
+	print_operation("ra\n");
 }
 
 void	rotate_b(t_stack *b)
@@ -40,7 +40,7 @@ void	rotate_b(t_stack *b)
 	rotate(b);
 	if (b->bench)
 		bench_count_rotate(b->bench, "rb");
-	write(1, "rb\n", 3);
+	print_operation("rb\n");
 }
 
 void	rotate_ab(t_stack *a, t_stack *b)
@@ -49,5 +49,5 @@ void	rotate_ab(t_stack *a, t_stack *b)
 	rotate(b);
 	if (a->bench)
 		bench_count_rotate(a->bench, "rr");
-	write(1, "rr\n", 3);
+	print_operation("rr\n");
 }

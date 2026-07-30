@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark_strategy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 15:28:26 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/28 23:45:53 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 01:32:16 by isabelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	print_adaptive(float disorder)
 	char	*s_text;
 	char	*m_text;
 	char	*c_text;
-	
+
 	s_text = "[bench] strategy:  Adaptive / O(n²)\n";
 	m_text = "[bench] strategy:  Adaptive / O(n√n)\n";
 	c_text = "[bench] strategy:  Adaptive / O(n log n)\n";
@@ -44,7 +44,7 @@ void	bench_print_strategy(t_bench *bench)
 	char	*s_text;
 	char	*m_text;
 	char	*c_text;
-	
+
 	s_text = "[bench] strategy:  Simple / O(n²)\n";
 	m_text = "[bench] strategy:  Medium / O(n√n)\n";
 	c_text = "[bench] strategy:  Complex / O(n log n)\n";

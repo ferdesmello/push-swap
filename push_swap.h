@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/28 20:09:31 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 01:06:12 by isabelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void		reverse_rotate(t_stack *stack);
 void		reverse_rotate_a(t_stack *a);
 void		reverse_rotate_b(t_stack *b);
 void		reverse_rotate_ab(t_stack *a, t_stack *b);
+
+void		print_operation(char *operation);
 
 void		algo(t_stack *a, t_stack *b, t_strategy strategy);
 

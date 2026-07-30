@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:35:46 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/29 00:00:08 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 01:24:36 by isabelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	swap_a(t_stack *a)
 	swap(a);
 	if (a->bench)
 		bench_count(a->bench, "sa");
-	write(1, "sa\n", 3);
+	print_operation("sa\n");
 }
 
 void	swap_b(t_stack *b)
@@ -45,7 +45,7 @@ void	swap_b(t_stack *b)
 	swap(b);
 	if (b->bench)
 		bench_count(b->bench, "sb");
-	write(1, "sb\n", 3);
+	print_operation("sb\n");
 }
 
 void	swap_ab(t_stack *a, t_stack *b)
@@ -54,5 +54,5 @@ void	swap_ab(t_stack *a, t_stack *b)
 	swap(b);
 	if (a->bench)
 		bench_count(a->bench, "ss");
-	write(1, "ss\n", 3);
+	print_operation("ss\n");
 }
