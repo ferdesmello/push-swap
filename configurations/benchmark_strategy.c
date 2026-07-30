@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark_strategy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 15:28:26 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/30 01:32:16 by isabelle         ###   ########.fr       */
+/*   Updated: 2026/07/30 04:11:54 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	print_adaptive(float disorder)
 		write(2, c_text, ft_strlen(c_text));
 }
 
-void	bench_print_strategy(t_bench *bench)
+void	bench_print_strategy(t_config *config)
 {
 	char	*s_text;
 	char	*m_text;
@@ -48,12 +48,12 @@ void	bench_print_strategy(t_bench *bench)
 	s_text = "[bench] strategy:  Simple / O(n²)\n";
 	m_text = "[bench] strategy:  Medium / O(n√n)\n";
 	c_text = "[bench] strategy:  Complex / O(n log n)\n";
-	if (bench->strategy == STRATEGY_SIMPLE)
+	if (config->strategy == STRATEGY_SIMPLE)
 		write(2, s_text, ft_strlen(s_text));
-	else if (bench->strategy == STRATEGY_MEDIUM)
+	else if (config->strategy == STRATEGY_MEDIUM)
 		write(2, m_text, ft_strlen(m_text));
-	else if (bench->strategy == STRATEGY_COMPLEX)
+	else if (config->strategy == STRATEGY_COMPLEX)
 		write(2, c_text, ft_strlen(c_text));
 	else
-		print_adaptive(bench->disorder);
+		print_adaptive(config->disorder);
 }

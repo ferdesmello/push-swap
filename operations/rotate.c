@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:58 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/30 03:52:44 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 04:24:12 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,24 @@ void	rotate(t_stack *stack)
 void	rotate_a(t_stack *a)
 {
 	rotate(a);
-	if (a->bench)
-		bench_count_rotate(a->bench, "ra");
+	if (a->config)
+		bench_count_rotate(a->config, "ra");
 	print_operation("ra\n");
 }
 
 void	rotate_b(t_stack *b)
 {
 	rotate(b);
-	if (b->bench)
-		bench_count_rotate(b->bench, "rb");
-	if (b->bench->bench_enabled == 1)
-		print_operation("rb\n");
+	if (b->config)
+		bench_count_rotate(b->config, "rb");
+	print_operation("rb\n");
 }
 
 void	rotate_ab(t_stack *a, t_stack *b)
 {
 	rotate(a);
 	rotate(b);
-	if (a->bench)
-		bench_count_rotate(a->bench, "rr");
+	if (a->config)
+		bench_count_rotate(a->config, "rr");
 	print_operation("rr\n");
 }

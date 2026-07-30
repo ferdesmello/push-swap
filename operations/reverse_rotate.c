@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:53 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/30 01:22:51 by isabelle         ###   ########.fr       */
+/*   Updated: 2026/07/30 04:08:49 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void	reverse_rotate(t_stack *stack)
 void	reverse_rotate_a(t_stack *a)
 {
 	reverse_rotate(a);
-	if (a->bench)
-		bench_count_reverse(a->bench, "rra");
+	if (a->config)
+		bench_count_reverse(a->config, "rra");
 	print_operation("rra\n");
 }
 
 void	reverse_rotate_b(t_stack *b)
 {
 	reverse_rotate(b);
-	if (b->bench)
-		bench_count_reverse(b->bench, "rrb");
+	if (b->config)
+		bench_count_reverse(b->config, "rrb");
 	print_operation("rrb\n");
 }
 
@@ -47,7 +47,7 @@ void	reverse_rotate_ab(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	if (a->bench)
-		bench_count_reverse(a->bench, "rrr");
+	if (a->config)
+		bench_count_reverse(a->config, "rrr");
 	print_operation("rrr\n");
 }

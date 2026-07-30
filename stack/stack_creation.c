@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:05 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/28 20:12:23 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 04:19:57 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	stack_init(t_stack *stack)
 	stack->head = NULL;
 	stack->tail = NULL;
 	stack->size = 0;
-	stack->bench = NULL;
+	stack->config = NULL;
 }
 
 t_node	*node_new(int value)

@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 16:00:52 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/28 20:11:22 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 04:10:33 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	algo(t_stack *a, t_stack *b, t_strategy strategy)
 	if (is_sorted(a))
 		return ;
 	disorder = compute_disorder(a);
-	if (a->bench)
+	if (a->config)
 	{
-		a->bench->disorder = disorder;
-		a->bench->strategy = strategy;
+		a->config->disorder = disorder;
+		a->config->strategy = strategy;
 	}
 	if (a->size > 5)
 		assign_indexes(a);

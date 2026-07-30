@@ -717,8 +717,8 @@ The program validates cases including:
 │   ├── simple.c
 │   ├── medium.c
 │   └── complex.c
-└── benchmark
-    ├── benchmark.c
+└── configurations
+    ├── config.c
     ├── benchmark_print.c
     └── benchmark_strategy.c
 ```
@@ -738,6 +738,7 @@ The program validates cases including:
 
 ## Operations
 
+- `operation_print.c` — prints the operation on the standard out
 - `operation_push.c` — `pa` and `pb`
 - `operation_swap.c` — `sa`, `sb` and `ss`
 - `operation_rotate.c` — `ra`, `rb` and `rr`
@@ -750,9 +751,9 @@ The program validates cases including:
 - `algorithm_medium.c` — chunk-based strategy
 - `algorithm_complex.c` — Binary Radix Sort
 
-## Benchmark
+## Configurations
 
-- `benchmark.c` — benchmark initialization, disorder calculation and counters
+- `config.c` — config initialization (mostly for benchmarks), disorder calculation and counters
 - `benchmark_print.c` — benchmark output
 - `benchmark_strategy.c` — strategy and complexity reporting
 

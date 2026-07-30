@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/30 03:48:50 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 04:16:51 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ typedef struct s_config
 	int			rrb;
 	int			rrr;
 	float		disorder;
-}	t_bench;
+}	t_config;
 
 typedef struct s_stack
 {
-	t_node	*head;
-	t_node	*tail;
-	int		size;
-	t_bench	*bench;
+	t_node		*head;
+	t_node		*tail;
+	int			size;
+	t_config	*config;
 }	t_stack;
 
 void		stack_init(t_stack *stack);
@@ -123,12 +123,12 @@ int			ft_printf(const char *string, ...);
 int			is_strategy_flag(char *arg);
 t_strategy	parse_strategy(char *arg);
 
-void		bench_init(t_bench *bench);
-void		bench_count(t_bench *bench, char *op);
-void		bench_count_rotate(t_bench *bench, char *op);
-void		bench_count_reverse(t_bench *bench, char *op);
-int			bench_total(t_bench *bench);
-void		bench_print(t_bench *bench);
-void		bench_print_strategy(t_bench *bench);
+void		config_init(t_config *config);
+void		bench_count(t_config *config, char *op);
+void		bench_count_rotate(t_config *config, char *op);
+void		bench_count_reverse(t_config *config, char *op);
+int			print_total(t_config *config);
+void		bench_print(t_config *config);
+void		bench_print_strategy(t_config *config);
 
 #endif

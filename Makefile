@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+         #
+#    By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/09 16:01:54 by iscarval          #+#    #+#              #
-#    Updated: 2026/07/30 01:27:03 by isabelle         ###   ########.fr        #
+#    Updated: 2026/07/30 04:20:44 by ferde-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,9 @@ SRC = \
 	algorithms/simple.c \
 	algorithms/medium.c \
 	algorithms/complex.c \
-	benchmark/benchmark.c \
-	benchmark/benchmark_print.c \
-	benchmark/benchmark_strategy.c
+	configurations/config.c \
+	configurations/benchmark_print.c \
+	configurations/benchmark_strategy.c
 
 OBJ = $(SRC:.c=.o)
 
