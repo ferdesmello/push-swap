@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 00:41:22 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/30 04:06:44 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 04:38:17 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,8 @@ int	main(int argc, char **argv)
 		stack_clear(&b);
 		return (0);
 	}
-	if (config.bench_enabled)
-	{
-		a.config = &config;
-		b.config = &config;
-	}
+	a.config = &config;
+	b.config = &config;
 	algo(&a, &b, config.strategy);
 	if (config.bench_enabled)
 		bench_print(&config);
