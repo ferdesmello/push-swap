@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:58 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/30 01:23:45 by isabelle         ###   ########.fr       */
+/*   Updated: 2026/07/30 03:52:44 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	rotate_b(t_stack *b)
 	rotate(b);
 	if (b->bench)
 		bench_count_rotate(b->bench, "rb");
-	print_operation("rb\n");
+	if (b->bench->bench_enabled == 1)
+		print_operation("rb\n");
 }
 
 void	rotate_ab(t_stack *a, t_stack *b)

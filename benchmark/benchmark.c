@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 05:04:54 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/26 19:54:28 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 03:44:45 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	bench_init(t_bench *bench)
 {
+	bench->strategy = STRATEGY_ADAPTIVE;
+	bench->bench_enabled = 0;
 	bench->sa = 0;
 	bench->sb = 0;
 	bench->ss = 0;
@@ -26,7 +28,7 @@ void	bench_init(t_bench *bench)
 	bench->rrb = 0;
 	bench->rrr = 0;
 	bench->disorder = 0.0;
-	bench->strategy = STRATEGY_ADAPTIVE;
+	
 }
 
 void	bench_count(t_bench *bench, char *op)

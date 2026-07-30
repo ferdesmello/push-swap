@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isabelle <isabelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/30 01:06:12 by isabelle         ###   ########.fr       */
+/*   Updated: 2026/07/30 03:48:50 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,6 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-typedef struct s_bench
-{
-	int		sa;
-	int		sb;
-	int		ss;
-	int		pa;
-	int		pb;
-	int		ra;
-	int		rb;
-	int		rr;
-	int		rra;
-	int		rrb;
-	int		rrr;
-	float	disorder;
-	int		strategy;
-}	t_bench;
-
-typedef struct s_stack
-{
-	t_node	*head;
-	t_node	*tail;
-	int		size;
-	t_bench	*bench;
-}	t_stack;
 
 typedef enum e_strategy
 {
@@ -64,7 +40,27 @@ typedef struct s_config
 {
 	t_strategy	strategy;
 	int			bench_enabled;
-}	t_config;
+	int			sa;
+	int			sb;
+	int			ss;
+	int			pa;
+	int			pb;
+	int			ra;
+	int			rb;
+	int			rr;
+	int			rra;
+	int			rrb;
+	int			rrr;
+	float		disorder;
+}	t_bench;
+
+typedef struct s_stack
+{
+	t_node	*head;
+	t_node	*tail;
+	int		size;
+	t_bench	*bench;
+}	t_stack;
 
 void		stack_init(t_stack *stack);
 t_node		*node_new(int value);
