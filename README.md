@@ -563,7 +563,8 @@ for i in {1..10}; do
 	./push_swap --complex $ARG | ./checker_linux $ARG
 done
 ```
-
+ARG=$(shuf -i 1-10000 -n 100)
+	./push_swap --bench --complex $ARG | ./checker_linux $ARG
 Every valid execution should return:
 
 ```text

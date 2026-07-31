@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/30 04:38:53 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 22:04:47 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef enum e_strategy
 	STRATEGY_SIMPLE,
 	STRATEGY_MEDIUM,
 	STRATEGY_COMPLEX,
-	STRATEGY_TURK
 }	t_strategy;
 
 typedef struct s_config
@@ -94,7 +93,7 @@ void		reverse_rotate_a(t_stack *a);
 void		reverse_rotate_b(t_stack *b);
 void		reverse_rotate_ab(t_stack *a, t_stack *b);
 
-void		print_operation(char *operation);
+void		print_operation(char *operation, t_stack *a);
 
 void		algo(t_stack *a, t_stack *b, t_strategy strategy);
 
@@ -125,8 +124,6 @@ t_strategy	parse_strategy(char *arg);
 
 void		config_init(t_config *config);
 void		bench_count(t_config *config, char *op);
-void		bench_count_rotate(t_config *config, char *op);
-void		bench_count_reverse(t_config *config, char *op);
 int			print_total(t_config *config);
 void		bench_print(t_config *config);
 void		bench_print_strategy(t_config *config);

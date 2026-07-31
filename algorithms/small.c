@@ -6,13 +6,13 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 16:40:14 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/28 20:10:53 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 21:19:18 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push_min_to_b(t_stack *a, t_stack *b)
+static int	push_min_to_b(t_stack *a, t_stack *b)
 {
 	t_node	*min;
 	int		position;
@@ -21,6 +21,7 @@ static void	push_min_to_b(t_stack *a, t_stack *b)
 	position = find_position(a, min);
 	move_to_top(a, position, 'a');
 	push_b(a, b);
+	return (1);
 }
 
 void	sort_two(t_stack *a)
@@ -46,6 +47,8 @@ void	sort_three(t_stack *a)
 
 void	sort_small(t_stack *a, t_stack *b)
 {
+	//int	flag;
+	
 	while (a->size > 3)
 		push_min_to_b(a, b);
 	sort_three(a);

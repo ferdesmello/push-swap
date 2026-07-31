@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:35:46 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/30 04:39:38 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:10:27 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,14 @@ void	swap_a(t_stack *a)
 {
 	swap(a);
 	if (a->config)
-		bench_count(a->config, "sa");
-	print_operation("sa\n");
+	print_operation("sa", a);
 }
 
 void	swap_b(t_stack *b)
 {
 	swap(b);
 	if (b->config)
-		bench_count(b->config, "sb");
-	print_operation("sb\n");
+	print_operation("sb", b);
 }
 
 void	swap_ab(t_stack *a, t_stack *b)
@@ -53,6 +51,5 @@ void	swap_ab(t_stack *a, t_stack *b)
 	swap(a);
 	swap(b);
 	if (a->config)
-		bench_count(a->config, "ss");
-	print_operation("ss\n");
+	print_operation("ss", a);
 }

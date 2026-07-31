@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 15:56:19 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/28 20:12:38 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 20:41:18 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,6 @@ int	is_sorted(t_stack *stack)
 			return (0);
 		current = current->next;
 	}
+	stack->config->bench_enabled = 0;
 	return (1);
 }

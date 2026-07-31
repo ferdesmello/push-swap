@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:53 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/30 04:39:53 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:10:04 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,14 @@ void	reverse_rotate_a(t_stack *a)
 {
 	reverse_rotate(a);
 	if (a->config)
-		bench_count_reverse(a->config, "rra");
-	print_operation("rra\n");
+	print_operation("rra", a);
 }
 
 void	reverse_rotate_b(t_stack *b)
 {
 	reverse_rotate(b);
 	if (b->config)
-		bench_count_reverse(b->config, "rrb");
-	print_operation("rrb\n");
+	print_operation("rrb", b);
 }
 
 void	reverse_rotate_ab(t_stack *a, t_stack *b)
@@ -48,6 +46,5 @@ void	reverse_rotate_ab(t_stack *a, t_stack *b)
 	reverse_rotate(a);
 	reverse_rotate(b);
 	if (a->config)
-		bench_count_reverse(a->config, "rrr");
-	print_operation("rrr\n");
+	print_operation("rrr", a);
 }

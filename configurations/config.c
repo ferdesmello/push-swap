@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 05:04:54 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/30 04:38:55 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 22:04:25 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,13 @@ void	bench_count(t_config *config, char *op)
 		config->pa++;
 	else if (ft_strcmp(op, "pb") == 0)
 		config->pb++;
-}
-
-void	bench_count_rotate(t_config *config, char *op)
-{
-	if (ft_strcmp(op, "ra") == 0)
+	else if (ft_strcmp(op, "ra") == 0)
 		config->ra++;
 	else if (ft_strcmp(op, "rb") == 0)
 		config->rb++;
 	else if (ft_strcmp(op, "rr") == 0)
 		config->rr++;
-}
-
-void	bench_count_reverse(t_config *config, char *op)
-{
-	if (ft_strcmp(op, "rra") == 0)
+	else if (ft_strcmp(op, "rra") == 0)
 		config->rra++;
 	else if (ft_strcmp(op, "rrb") == 0)
 		config->rrb++;

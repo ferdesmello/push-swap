@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 13:59:19 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/30 04:15:20 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 21:59:00 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	print_op(char *name, int len, int count)
 			write(2, "  ", 2);
 }
 
-static void	bench_print_total(t_config *config)
+void	bench_print_total(t_config *config)
 {
 	write(2, "[bench] total_ops:  ", 20);
 	putnbr_stderr(print_total(config));

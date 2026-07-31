@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 20:36:19 by ferde-so          #+#    #+#             */
-/*   Updated: 2026/07/30 04:39:05 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:09:52 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,11 @@ void	push(t_stack *src, t_stack *dst)
 void	push_a(t_stack *b, t_stack *a)
 {
 	push(b, a);
-	if (a->config)
-		bench_count(a->config, "pa");
-	print_operation("pa\n");
+	print_operation("pa", a);
 }
 
 void	push_b(t_stack *a, t_stack *b)
 {
 	push(a, b);
-	if (a->config)
-		bench_count(a->config, "pb");
-	print_operation("pb\n");
+	print_operation("pb", b);
 }
