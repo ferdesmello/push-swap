@@ -6,11 +6,29 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 16:40:14 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/30 21:19:18 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/03 06:50:05 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+t_node	*find_max(t_stack *stack)
+{
+	t_node	*current;
+	t_node	*max;
+
+	if (!stack || !stack->head)
+		return (NULL);
+	max = stack->head;
+	current = stack->head->next;
+	while (current)
+	{
+		if (current->value > max->value)
+			max = current;
+		current = current->next;
+	}
+	return (max);
+}
 
 static int	push_min_to_b(t_stack *a, t_stack *b)
 {
@@ -47,8 +65,6 @@ void	sort_three(t_stack *a)
 
 void	sort_small(t_stack *a, t_stack *b)
 {
-	//int	flag;
-	
 	while (a->size > 3)
 		push_min_to_b(a, b);
 	sort_three(a);

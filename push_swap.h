@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/30 22:04:47 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/03 06:49:39 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
-
 
 typedef enum e_strategy
 {

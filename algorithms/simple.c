@@ -6,29 +6,11 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 17:44:54 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/28 20:10:44 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/03 06:39:26 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-t_node	*find_max(t_stack *stack)
-{
-	t_node	*current;
-	t_node	*max;
-
-	if (!stack || !stack->head)
-		return (NULL);
-	max = stack->head;
-	current = stack->head->next;
-	while (current)
-	{
-		if (current->value > max->value)
-			max = current;
-		current = current->next;
-	}
-	return (max);
-}
 
 t_node	*find_min(t_stack *stack)
 {

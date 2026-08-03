@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 05:04:54 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/30 22:04:25 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/03 06:50:55 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	config_init(t_config *config)
 	config->rrb = 0;
 	config->rrr = 0;
 	config->disorder = 0.0;
-	
 }
 
 void	bench_count(t_config *config, char *op)

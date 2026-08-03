@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 01:02:30 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/30 22:05:12 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/03 06:50:40 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_operation(char *operation, t_stack *a)
 {
-	int		i;
+	int	i;
 
 	if (a->config)
 	{
@@ -26,5 +26,5 @@ void	print_operation(char *operation, t_stack *a)
 			i++;
 		}
 		write(1, "\n", 1);
-	}		
+	}
 }
