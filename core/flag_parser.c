@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 13:15:57 by isabelle          #+#    #+#             */
-/*   Updated: 2026/07/28 20:11:17 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/04 21:27:53 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_strategy	parse_strategy(char *arg)
 		return (STRATEGY_MEDIUM);
 	if (ft_strcmp(arg, "--complex") == 0)
 		return (STRATEGY_COMPLEX);
+	if (ft_strcmp(arg, "--turk") == 0)
+		return (STRATEGY_TURK);
 	return (STRATEGY_ADAPTIVE);
 }
 
@@ -40,6 +42,8 @@ int	is_strategy_flag(char *arg)
 	if (ft_strcmp(arg, "--medium") == 0)
 		return (1);
 	if (ft_strcmp(arg, "--complex") == 0)
+		return (1);
+	if (ft_strcmp(arg, "--turk") == 0)
 		return (1);
 	if (ft_strcmp(arg, "--adaptive") == 0)
 		return (1);

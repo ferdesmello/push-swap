@@ -63,7 +63,7 @@ make re
 ## Basic Usage
 
 ```sh
-./push_swap 5 2 8 1 3
+./push_swap 5 2 8 1 3 0
 ```
 
 The program prints one Push_swap instruction per line.
@@ -75,31 +75,31 @@ If no strategy flag is provided, the Adaptive strategy is used by default.
 Simple:
 
 ```sh
-./push_swap --simple 5 2 8 1 3
+./push_swap --simple 5 2 8 1 3 0
 ```
 
 Medium:
 
 ```sh
-./push_swap --medium 5 2 8 1 3
+./push_swap --medium 5 2 8 1 3 0
 ```
 
 Complex:
 
 ```sh
-./push_swap --complex 5 2 8 1 3
+./push_swap --complex 5 2 8 1 3 0
 ```
 
 Adaptive:
 
 ```sh
-./push_swap --adaptive 5 2 8 1 3
+./push_swap --adaptive 5 2 8 1 3 0
 ```
 
 Benchmark mode can be combined with a strategy:
 
 ```sh
-./push_swap --bench --complex 5 2 8 1 3
+./push_swap --bench --complex 5 2 8 1 3 0
 ```
 
 ---
@@ -380,6 +380,24 @@ The observed benchmark growth is consistent with the theoretical
 
 The benchmark results provide empirical validation and are not used as a
 substitute for the theoretical complexity analysis.
+
+---
+
+# Turk Algorithm
+
+Originally, the Turk algorithm would be our Complex algorithm, but we found it to be O(n√n) instead of O(n log n). Its good performance was only in the first 500-1000 parameter range, losing for the radix algorithm later on. But we still included it here as a special case.
+
+Turk mode is enabled using:
+
+```sh
+--turk
+```
+
+For example:
+
+```sh
+./push_swap --turk 5 2 8 1 3 0
+```
 
 ---
 
@@ -707,7 +725,8 @@ The program validates cases including:
 │   └── printer.c
 ├── stack
 │   ├── stack_creation.c
-│   └── stack_utils.c
+│   ├── stack_utils.c
+│   └── debug.c
 ├── operations
 │   ├── push.c
 │   ├── swap.c
@@ -718,6 +737,10 @@ The program validates cases including:
 │   ├── simple.c
 │   ├── medium.c
 │   └── complex.c
+├── turk
+│   ├── turk.c
+│   ├── turk_coast.c
+│   └── turk_utils.c
 └── configurations
     ├── config.c
     ├── benchmark_print.c
@@ -736,6 +759,7 @@ The program validates cases including:
 
 - `stack_creation.c` — stack initialization, input loading and node creation
 - `stack_utils.c` — stack utilities and validation
+- `debug.c` — off project functions to test whether the stacks built correctly
 
 ## Operations
 
@@ -751,6 +775,12 @@ The program validates cases including:
 - `algorithm_simple.c` — repeated minimum-extraction strategy
 - `algorithm_medium.c` — chunk-based strategy
 - `algorithm_complex.c` — Binary Radix Sort
+
+## Turk
+
+- `turk.c` — Turk algorithm
+- `turk_coast.c` — coast functions for the Turk algorithm
+- `turk_utils.c` — utils functions for the Turk algorithm
 
 ## Configurations
 

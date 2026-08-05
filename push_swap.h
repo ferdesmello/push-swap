@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 14:27:15 by iscarval          #+#    #+#             */
-/*   Updated: 2026/08/03 06:49:39 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/04 21:26:31 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_strategy
 	STRATEGY_SIMPLE,
 	STRATEGY_MEDIUM,
 	STRATEGY_COMPLEX,
+	STRATEGY_TURK
 }	t_strategy;
 
 typedef struct s_config
@@ -65,6 +66,10 @@ t_node		*node_new(int value);
 int			stack_add_back(t_stack *stack, t_node *new_node);
 int			stack_load(t_stack *a, int argc, char **argv, int start);
 void		stack_clear(t_stack *stack);
+
+void		stack_print(t_stack *stack, char name, int flag);
+int			stack_valid(t_stack *stack);
+int			stack_operations_test(t_stack *a, t_stack *b);
 
 int			is_number(const char *s);
 long		ft_atoi(const char *nptr);
@@ -112,6 +117,13 @@ int			find_chunk_position(t_stack *a, int limit);
 void		medium_sort(t_stack *a, t_stack *b);
 
 void		adaptive_sort(t_stack *a, t_stack *b, float disorder);
+
+t_node		*find_target_b(t_stack *b, t_node *node);
+void		push_to_b(t_stack *a, t_stack *b);
+t_node		*find_target_a(t_stack *a, t_node *node);
+int			get_move_cost(t_stack *stack, t_node *node);
+t_node		*find_cheapest(t_stack *a, t_stack *b);
+void		turk_sort(t_stack *a, t_stack *b);
 
 int			ft_putchar(char c);
 int			ft_putnbr(int n);

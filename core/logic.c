@@ -6,7 +6,7 @@
 /*   By: ferde-so <ferde-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 16:00:52 by iscarval          #+#    #+#             */
-/*   Updated: 2026/07/30 04:10:33 by ferde-so         ###   ########.fr       */
+/*   Updated: 2026/08/04 21:28:57 by ferde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	run_strategy(t_stack *a, t_stack *b,
 		medium_sort(a, b);
 	else if (strategy == STRATEGY_COMPLEX)
 		complex_sort(a, b);
+	else if (strategy == STRATEGY_TURK)
+		turk_sort(a, b);
 	else
 		adaptive_sort(a, b, disorder);
 }

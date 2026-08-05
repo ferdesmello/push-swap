@@ -1,12 +1,16 @@
-# Executáveis
+# Executables
 push_swap
 checker_linux
 
+# Testers
 push_swap_tester-main/
 Push-Swap-Tester-master/
 
-# Objetos
+# Objects
 *.o
 
-# Arquivos temporários
+# Temporary files
 *.out
+
+# Python
+__pycache__/
