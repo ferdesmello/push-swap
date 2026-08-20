@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by iscarval and ferde-so.*
+*This project has been created as part of the 42 curriculum by [iscarval](https://github.com/Isabelle-AL) and [ferde-so](https://github.com/ferdesmello).*
 
 # Push_swap
 
